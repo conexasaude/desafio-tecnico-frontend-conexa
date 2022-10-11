@@ -74,3 +74,21 @@ Obs.: A funcionalidade de agendar uma nova consulta deverá ser um modal (Não p
 
 email: gandalf@mail.com
 senha: 123456
+
+
+### Frontend
+
+```bash
+yarn
+```
+...para instalar as dependências, e logo após rodar:
+
+```bash
+yarn dev
+```
+
+### O que foi utilizado: 
+
+- Para o ambiente de desenvolvimento utilizei o ViteJs
+- Foi utilizado typescript para uma melhor construção do codigo e organização
+- Foi utilizado Styled Component
