@@ -17,6 +17,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
+    "react-router-dom": "^6.5.0",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "typescript": "^4.4.2",
@@ -41,7 +42,15 @@
           "**/*.stories.*"
         ],
         "rules": {
-          "import/no-anonymous-default-export": "off"
+          "import/no-anonymous-default-export": [2, {
+            "allowArray": false,
+            "allowArrowFunction": true,
+            "allowAnonymousClass": false,
+            "allowAnonymousFunction": true,
+            "allowCallExpression": true,
+            "allowLiteral": false,
+            "allowObject": false
+          }]
         }
       }
     ]
