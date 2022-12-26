@@ -26,27 +26,4 @@ describe('PrivateRoute component', () => {
 
     expect(fakeRenderCallback).toHaveBeenCalled();
   });
-
-  // it('should render <Navigate> when doctor isnt loggeed without token', () => {
-  //   const fakeRenderCallback = jest.fn();
-  //   const SimpleChildren = () => {
-  //     fakeRenderCallback();
-  //     return null;
-  //   };
-
-  //   store.dispatch(
-  //     setDoctor({
-  //       name: '',
-  //       token: '',
-  //     })
-  //   );
-
-  //   render(
-  //     <PrivateRoute>
-  //       <SimpleChildren />
-  //     </PrivateRoute>
-  //   );
-
-  //   expect(fakeRenderCallback).toHaveBeenCalled();
-  // });
 });

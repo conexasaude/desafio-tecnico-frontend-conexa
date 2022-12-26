@@ -1,6 +1,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import { pagesPathsEnum } from 'utils/constants';
+import Layout from '../containers/GenericLayout';
 import NewMedicalConsultation from '../containers/NewMedicalConsultation';
 import DoctorRoom from '../pages/DoctorRoom';
 import Login from '../pages/Login';
@@ -13,22 +15,24 @@ export default () => {
   return (
     <>
       <Routes location={state?.backgroundLocation || location}>
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="doctor-room"
-          element={
-            <PrivateRoute>
-              <DoctorRoom />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Login />} />
+          <Route path={pagesPathsEnum.login} element={<Login />} />
+          <Route
+            path={pagesPathsEnum.doctorRoom}
+            element={
+              <PrivateRoute>
+                <DoctorRoom />
+              </PrivateRoute>
+            }
+          />
+        </Route>
       </Routes>
 
       {state?.backgroundLocation && (
         <Routes>
           <Route
-            path="new-medical-consultation"
+            path={pagesPathsEnum.newConsultation}
             element={
               <PrivateRoute>
                 <NewMedicalConsultation />

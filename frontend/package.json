@@ -16,6 +16,7 @@
     "axios": "^1.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.5.0",
     "react-scripts": "5.0.1",
@@ -26,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(axios)/)'",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -42,15 +43,18 @@
           "**/*.stories.*"
         ],
         "rules": {
-          "import/no-anonymous-default-export": [2, {
-            "allowArray": false,
-            "allowArrowFunction": true,
-            "allowAnonymousClass": false,
-            "allowAnonymousFunction": true,
-            "allowCallExpression": true,
-            "allowLiteral": false,
-            "allowObject": false
-          }]
+          "import/no-anonymous-default-export": [
+            2,
+            {
+              "allowArray": false,
+              "allowArrowFunction": true,
+              "allowAnonymousClass": false,
+              "allowAnonymousFunction": true,
+              "allowCallExpression": true,
+              "allowLiteral": false,
+              "allowObject": false
+            }
+          ]
         }
       }
     ]
@@ -68,6 +72,7 @@
     ]
   },
   "devDependencies": {
+    "@emotion/jest": "^11.10.5",
     "@storybook/addon-actions": "^6.5.14",
     "@storybook/addon-essentials": "^6.5.14",
     "@storybook/addon-interactions": "^6.5.14",
@@ -78,6 +83,7 @@
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.14",
     "@storybook/testing-library": "^0.0.13",
+    "@types/react-redux": "^7.1.24",
     "babel-plugin-named-exports-order": "^0.0.2",
     "prop-types": "^15.8.1",
     "webpack": "^5.75.0"

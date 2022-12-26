@@ -19,6 +19,56 @@
       "id": 4,
       "patientId": 3,
       "date": "Thu Feb 11 2021 13:00:00 GMT-0300 (Brasilia Standard Time)"
+    },
+    {
+      "id": 5,
+      "patientId": 1,
+      "date": "Fri Feb 05 2021 10:20:00 GMT-0300 (Brasilia Standard Time)"
+    },
+    {
+      "id": 6,
+      "patientId": 3,
+      "date": "Thu Feb 11 2021 09:00:00 GMT-0300 (Brasilia Standard Time)"
+    },
+    {
+      "id": 7,
+      "patientId": 2,
+      "date": "Thu Feb 11 2021 10:00:00 GMT-0300 (Brasilia Standard Time)"
+    },
+    {
+      "id": 8,
+      "patientId": 3,
+      "date": "Thu Feb 11 2021 13:00:00 GMT-0300 (Brasilia Standard Time)"
+    },
+    {
+      "id": 9,
+      "patientId": 1,
+      "date": "Fri Feb 05 2021 10:20:00 GMT-0300 (Brasilia Standard Time)"
+    },
+    {
+      "id": 10,
+      "patientId": 3,
+      "date": "Thu Feb 11 2021 09:00:00 GMT-0300 (Brasilia Standard Time)"
+    },
+    {
+      "id": 11,
+      "patientId": 2,
+      "date": "Thu Feb 11 2021 10:00:00 GMT-0300 (Brasilia Standard Time)"
+    },
+    {
+      "id": 12,
+      "patientId": 3,
+      "date": "Thu Feb 11 2021 13:00:00 GMT-0300 (Brasilia Standard Time)"
+    },
+    {
+      "patientId": 5,
+      "date": "Sun Dec 05 1993 16:15:00 GMT-0200 (Brasilia Summer Time)",
+      "id": 13
+    },
+    {
+      "patientId": 6,
+      "date": "Sun Dec 25 2022 21:20:00 GMT-0300 (Brasilia Standard Time)",
+      "id": 14
     }
   ],
   "patients": [
@@ -39,6 +89,24 @@
       "first_name": "Saruman",
       "last_name": "The White",
       "email": "saruman.thewhite@mail.com"
+    },
+    {
+      "first_name": "Saruman_1",
+      "last_name": "The White_1",
+      "email": "saruman.thewhite@mail.com_1",
+      "id": 4
+    },
+    {
+      "first_name": "kelvin",
+      "last_name": "Jesus",
+      "email": "kelvin@kelvin.com",
+      "id": 5
+    },
+    {
+      "first_name": "outro",
+      "last_name": "kelvin",
+      "email": "ke@ke",
+      "id": 6
     }
   ]
 }
