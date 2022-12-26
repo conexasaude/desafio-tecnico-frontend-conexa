@@ -36,5 +36,5 @@ TypePassword.args = {
   required: true,
   type: 'password',
   onChange: action('onChange called'),
-  toolTip: 'sua senha deve conter carcteres e numero',
+  toolTip: 'sua senha deve conter carcteres e numeros',
 };

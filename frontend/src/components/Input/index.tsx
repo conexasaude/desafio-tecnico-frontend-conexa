@@ -44,12 +44,7 @@ const Input = ({
         {labelText}
         {toolTip && (
           <span className="more-info-icon">
-            <span
-              className="icon-container"
-              onMouseOver={() => console.log('>>>>>>>>')}
-              onMouseLeave={() => console.log('<<<<<<<')}
-              role="button"
-            >
+            <span className="icon-container" role="button">
               <FaRegQuestionCircle />
             </span>
             <span className="tool-tip-text">{toolTip}</span>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaTimes } from 'react-icons/fa';
 import * as S from './index.style';
 
 export interface GenericModalProps {
@@ -24,7 +25,7 @@ const GenericModal = ({
       <div>
         {handleClose && (
           <span onClick={handleClose} className="close-button">
-            <i className="fas fa-times"></i>
+            <FaTimes />
           </span>
         )}
         {children}

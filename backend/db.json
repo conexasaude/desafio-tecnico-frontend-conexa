@@ -69,6 +69,11 @@
       "patientId": 6,
       "date": "Sun Dec 25 2022 21:20:00 GMT-0300 (Brasilia Standard Time)",
       "id": 14
+    },
+    {
+      "patientId": 7,
+      "date": "Tue Dec 05 2023 03:38:00 GMT-0300 (Brasilia Standard Time)",
+      "id": 15
     }
   ],
   "patients": [
@@ -107,6 +112,12 @@
       "last_name": "kelvin",
       "email": "ke@ke",
       "id": 6
+    },
+    {
+      "first_name": "Dino",
+      "last_name": "Silva",
+      "email": "dino@silva.com",
+      "id": 7
     }
   ]
 }

@@ -2,10 +2,10 @@
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { pagesPathsEnum } from 'utils/constants';
-import Layout from '../containers/GenericLayout';
-import NewMedicalConsultation from '../containers/NewMedicalConsultation';
-import DoctorRoom from '../pages/DoctorRoom';
-import Login from '../pages/Login';
+import Layout from 'containers/GenericLayout';
+import NewMedicalConsultation from 'containers/NewMedicalConsultation';
+import DoctorRoom from 'pages/DoctorRoom';
+import Login from 'pages/Login';
 import PrivateRoute from './PrivateRoute';
 
 export default () => {

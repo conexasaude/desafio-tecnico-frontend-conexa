@@ -73,10 +73,7 @@ const NewMedicalConsultation = () => {
             labelText="Data"
             name="date"
             value={date}
-            onChange={(e) => {
-              debugger;
-              setDate((e.target as HTMLInputElement).value);
-            }}
+            onChange={(e) => setDate((e.target as HTMLInputElement).value)}
             type="date"
             required
           />
@@ -84,10 +81,7 @@ const NewMedicalConsultation = () => {
             labelText="Horário"
             name="time"
             value={time}
-            onChange={(e) => {
-              debugger;
-              setTime((e.target as HTMLInputElement).value);
-            }}
+            onChange={(e) => setTime((e.target as HTMLInputElement).value)}
             type="time"
             required
           />
