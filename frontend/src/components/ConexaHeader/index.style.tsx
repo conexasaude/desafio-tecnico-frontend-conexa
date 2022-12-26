@@ -7,6 +7,11 @@ export const RightContent = styled.div`
       margin-right: 0;
     }
   }
+  @media screen and (max-width: 991px) {
+    .salutation {
+      display: none;
+    }
+  }
 `;
 
 export const LogoWrapper = styled.div`
