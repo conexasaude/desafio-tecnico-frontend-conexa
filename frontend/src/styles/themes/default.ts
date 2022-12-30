@@ -5,4 +5,5 @@ export const defaultTheme = {
   sucess: "green",
   textColor: "#575453",
   textColorWhite: "#fff",
+  titleColor: "#1c307f",
 };

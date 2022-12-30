@@ -15,7 +15,9 @@ export const Header: React.FC = () => {
 
       <div>
         <span>Olá , Dr. Gandalf</span>
-        <Button width="57px"> Sair</Button>
+        <Button width="57px" variant="secondary">
+          Sair
+        </Button>
       </div>
     </ContainerHeader>
   );

@@ -12,31 +12,28 @@ export const ContainerButton = styled.button<ButtonProps>`
   font-weight: 700;
 
   ${(props) =>
-    props?.variant !== "secondary" &&
-    css`
-      font-size: 14px;
-      border-radius: 8px;
-      background-color: ${(props) => props.theme.primary};
-      color: ${(props) => props.theme.textColorWhite};
+    props?.variant === "secondary"
+      ? css`
+          font-size: 12px;
+          border: 2px solid ${(props) => props.theme.primary};
+          border-radius: 6px;
+          color: ${(props) => props.theme.primary};
+          background-color: transparent;
 
-      :hover {
-        background-color: ${(props) => darken(0.2, props.theme.primary)};
-      }
-    `};
+          :hover {
+            background-color: ${(props) => props.theme.primary};
+            color: ${(props) => props.theme.textColorWhite};
+            transition: ease-in-out 150ms;
+          }
+        `
+      : css`
+          font-size: 14px;
+          border-radius: 8px;
+          background-color: ${(props) => props.theme.primary};
+          color: ${(props) => props.theme.textColorWhite};
 
-  ${(props) =>
-    props?.variant === "secondary" &&
-    css`
-      font-size: 12px;
-      border: 2px solid ${(props) => props.theme.primary};
-      border-radius: 6px;
-      color: ${(props) => props.theme.primary};
-      background-color: transparent;
-
-      :hover {
-        background-color: ${(props) => props.theme.primary};
-        color: ${(props) => props.theme.textColorWhite};
-        transition: ease-in-out 150ms;
-      }
-    `};
+          :hover {
+            background-color: ${(props) => darken(0.2, props.theme.primary)};
+          }
+        `};
 `;
