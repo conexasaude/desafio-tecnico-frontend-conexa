@@ -3,12 +3,16 @@ import Router from "./routes";
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./styles/themes/default";
 import Global from "./styles/global";
+import { Header } from "./components/header/header";
 
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Router />
       <Global />
+      <div>
+        <Header />
+        <Router />
+      </div>
     </ThemeProvider>
   );
 }

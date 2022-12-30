@@ -3,4 +3,6 @@ export const defaultTheme = {
   secondary: "",
   danger: "",
   sucess: "green",
+  textColor: "#575453",
+  textColorWhite: "#fff",
 };
