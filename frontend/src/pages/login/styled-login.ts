@@ -5,6 +5,12 @@ export const ContainerLogin = styled.div`
   display: flex;
   align-items: center;
   height: 92vh;
+
+  @media (max-width: 1022px) {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 24px 24px;
+  }
 `;
 
 export const ContentLeftLogin = styled.div`
@@ -14,6 +20,17 @@ export const ContentLeftLogin = styled.div`
   h1 {
     color: ${(props) => props.theme.titleColor};
     font-size: 52px;
+  }
+
+  @media (max-width: 1022px) {
+    img {
+      display: none;
+    }
+
+    h1 {
+      font-size: 32px;
+      text-align: center;
+    }
   }
 `;
 
@@ -32,6 +49,12 @@ export const ContentRigthLogin = styled.div`
 
     button {
       margin-top: 32px;
+    }
+  }
+
+  @media (max-width: 1022px) {
+    form {
+      width: 100%;
     }
   }
 `;
