@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   ContainerLogin,
   ContentLeftLogin,
@@ -8,8 +8,11 @@ import {
 import imglogin from "../../assets/imglogin.svg";
 import Input from "../../components/input/input";
 import Button from "../../components/button/button";
+import { AuthContext } from "../../auth/context/authContext";
 
 const Login: React.FC = () => {
+  const { handleLogin } = useContext(AuthContext);
+
   return (
     <ContainerLogin>
       <ContentLeftLogin>
@@ -23,7 +26,7 @@ const Login: React.FC = () => {
         <form>
           <Input type="email" label="E-mail" placeholder="Digite seu e-mail" />
           <Input type="password" label="Senha" placeholder="Digite sua senha" />
-          <Button>Entrar </Button>
+          <Button onClick={handleLogin}>Entrar </Button>
         </form>
       </ContentRigthLogin>
     </ContainerLogin>

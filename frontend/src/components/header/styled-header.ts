@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { headerPorps } from "./header";
 
-export const ContainerHeader = styled.div`
+export const ContainerHeader = styled.div<headerPorps>`
   background: #fffffb;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.05);
   height: 57px;
@@ -22,7 +23,10 @@ export const ContainerHeader = styled.div`
     align-items: center;
   }
 
-  @media (max-width: 1250px) {
+  @media (max-width: 1022px) {
+    justify-content: ${(props) =>
+      props?.authenticated ? "space-between" : "center"};
+
     div:nth-child(2) {
       span {
         display: none;

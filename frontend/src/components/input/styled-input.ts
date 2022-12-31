@@ -19,6 +19,7 @@ export const ContainerInput = styled.div<InputProps>`
     border-bottom: 2px solid #dad2d0;
     padding-right: 30px;
     width: 100%;
+    padding-bottom: 5px;
   }
 
   div {
