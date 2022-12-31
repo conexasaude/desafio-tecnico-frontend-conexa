@@ -5,6 +5,8 @@ import {
   ContentRigthLogin,
 } from "./styled-login";
 
+import { FaRegQuestionCircle } from "react-icons/fa";
+
 import imglogin from "../../assets/imglogin.svg";
 import Input from "../../components/input/input";
 import Button from "../../components/button/button";
@@ -25,7 +27,13 @@ const Login: React.FC = () => {
       <ContentRigthLogin>
         <form>
           <Input type="email" label="E-mail" placeholder="Digite seu e-mail" />
-          <Input type="password" label="Senha" placeholder="Digite sua senha" />
+          <Input
+            type="password"
+            label="Senha"
+            placeholder="Digite sua senha"
+            tooltipContent={<FaRegQuestionCircle />}
+            tooltipText={<p>Digite sua senha secreta</p>}
+          />
           <Button onClick={handleLogin}>Entrar </Button>
         </form>
       </ContentRigthLogin>

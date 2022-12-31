@@ -6,4 +6,5 @@ export const defaultTheme = {
   textColor: "#575453",
   textColorWhite: "#fff",
   titleColor: "#1c307f",
+  colorIcon: "#999392",
 };

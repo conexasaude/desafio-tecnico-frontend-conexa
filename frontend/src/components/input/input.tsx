@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ContainerInput } from "./styled-input";
 
 import { IoEyeOff, IoEye } from "react-icons/io5";
+import Tooltip from "../tooltip/tooltip";
 
 export interface InputProps {
   width?: string;
@@ -14,6 +15,8 @@ export interface InputProps {
   formUser?: any;
   onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
   value?: string;
+  tooltipContent?: any;
+  tooltipText?: any;
 }
 
 const Input: React.FC<InputProps> = ({ ...props }: InputProps) => {
@@ -21,7 +24,17 @@ const Input: React.FC<InputProps> = ({ ...props }: InputProps) => {
 
   return (
     <ContainerInput>
-      {props?.label && <label>{props?.label}</label>}
+      {props?.label && (
+        <article>
+          <label>{props?.label}</label>
+
+          {props?.tooltipContent && (
+            <Tooltip textTooltip={props?.tooltipText}>
+              {props?.tooltipContent}
+            </Tooltip>
+          )}
+        </article>
+      )}
       {props?.type === "password" ? (
         <div>
           <input

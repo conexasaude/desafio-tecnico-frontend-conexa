@@ -12,6 +12,7 @@ export const ContainerInput = styled.div<InputProps>`
     font-weight: 400;
     font-size: 14px;
     color: ${(props) => props.theme.textColor};
+    padding-right: 8px;
   }
 
   input {
@@ -21,7 +22,19 @@ export const ContainerInput = styled.div<InputProps>`
     width: 100%;
     padding-bottom: 5px;
   }
+  article {
+    display: flex;
+    gap: 16px;
+    cursor: pointer;
 
+    svg {
+      color: ${(props) => props.theme.colorIcon};
+    }
+
+    div {
+      width: auto;
+    }
+  }
   div {
     position: relative;
     display: flex;
@@ -31,7 +44,7 @@ export const ContainerInput = styled.div<InputProps>`
       position: absolute;
       right: 0;
       cursor: pointer;
-      color: ${(props) => props.theme.textColor};
+      color: ${(props) => props.theme.colorIcon};
     }
   }
 `;
