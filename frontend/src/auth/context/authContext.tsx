@@ -18,7 +18,7 @@ export function AuthProvider({ children }: authContexProviderProps) {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const userName = localStorage.getItem("token");
+    const userName = localStorage.getItem("userName");
 
     if (token && userName) {
       API.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;

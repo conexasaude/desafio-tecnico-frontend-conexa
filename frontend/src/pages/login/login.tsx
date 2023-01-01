@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   ContainerLogin,
   ContentLeftLogin,
@@ -11,9 +11,18 @@ import imglogin from "../../assets/imglogin.svg";
 import Input from "../../components/input/input";
 import Button from "../../components/button/button";
 import { AuthContext } from "../../auth/context/authContext";
+import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
-  const { handleLogin } = useContext(AuthContext);
+  const { handleLogin, authenticated } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authenticated) {
+      navigate("/home");
+    }
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <ContainerLogin>
