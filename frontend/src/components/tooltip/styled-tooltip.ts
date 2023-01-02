@@ -1,24 +1,23 @@
 import styled from "styled-components";
 
-export const TooltipText = styled.div`
+export const TooltipText = styled.section`
   color: #fff;
   text-align: center;
   cursor: pointer;
-  position: a;
 `;
-export const TooltipBox = styled.div`
+export const TooltipBox = styled.section`
   position: absolute;
   visibility: hidden;
   color: transparent;
   background-color: transparent;
   transition: visibility 0.5s, ease-in-out;
 `;
-export const TooltipCard = styled.div`
+export const TooltipCard = styled.section`
   position: relative;
   & ${TooltipText}:hover + ${TooltipBox} {
     visibility: visible;
     position: absolute;
-    margin-left: 10px;
+    margin-left: 20px;
     min-width: 150px;
     color: ${(props) => props?.theme?.textColorWhite};
     background: ${(props) => props?.theme?.textColor};
@@ -29,8 +28,9 @@ export const TooltipCard = styled.div`
     align-items: center;
     padding: 10px;
     flex-direction: column;
-    margin-top: -10px;
+    margin-top: -40px;
     border-radius: 8px;
+
     &:before {
       border-color: transparent transparent rgba(0, 0, 0, 0.8)
         rgba(0, 0, 0, 0.8);

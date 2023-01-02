@@ -8,12 +8,10 @@ export interface TooltipProps {
 
 const Tooltip: React.FC<TooltipProps> = ({ ...props }: TooltipProps) => {
   return (
-    <>
-      <TooltipCard>
-        <TooltipText>{props?.children}</TooltipText>
-        <TooltipBox>{props?.textTooltip}</TooltipBox>
-      </TooltipCard>
-    </>
+    <TooltipCard>
+      <TooltipText>{props?.children}</TooltipText>
+      <TooltipBox>{props?.textTooltip}</TooltipBox>
+    </TooltipCard>
   );
 };
 

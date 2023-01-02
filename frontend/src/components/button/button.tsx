@@ -11,7 +11,7 @@ export interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ ...props }: ButtonProps) => {
   return (
-    <ContainerButton {...props} variant={props?.variant}>
+    <ContainerButton type="submit" {...props} variant={props?.variant}>
       {props?.children}
     </ContainerButton>
   );

@@ -17,13 +17,17 @@ export interface InputProps {
   value?: string;
   tooltipContent?: any;
   tooltipText?: any;
+  name?: string;
+  error?: boolean;
+  require?: boolean;
+  disable?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({ ...props }: InputProps) => {
   const [passwordSelect, setPasswordSelect] = useState<boolean>(true);
 
   return (
-    <ContainerInput>
+    <ContainerInput error={props.error}>
       {props?.label && (
         <article>
           <label>{props?.label}</label>
@@ -39,8 +43,11 @@ const Input: React.FC<InputProps> = ({ ...props }: InputProps) => {
         <div>
           <input
             type={passwordSelect ? "password" : "text"}
+            {...props.formUser}
+            disabled={props.disable}
             placeholder={props?.placeholder}
-            required
+            onChange={props.onChange}
+            value={props?.value}
           />
 
           {passwordSelect ? (
@@ -51,9 +58,9 @@ const Input: React.FC<InputProps> = ({ ...props }: InputProps) => {
         </div>
       ) : (
         <input
-          required
           type={props.type ? props.type : "text"}
           {...props.formUser}
+          disabled={props.disable}
           placeholder={props?.placeholder}
           onChange={props.onChange}
           value={props?.value}

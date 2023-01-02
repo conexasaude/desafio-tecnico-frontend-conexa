@@ -1,11 +1,17 @@
 import React, { createContext, ReactNode, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Loading } from "../../components/loading/loading";
 
 import { API } from "../../services/api";
 
 interface authContexProviderProps {
   children: ReactNode;
 }
+
+type userProps = {
+  email: "string";
+  password: "string";
+};
 
 export const AuthContext = createContext({} as any);
 
@@ -29,11 +35,8 @@ export function AuthProvider({ children }: authContexProviderProps) {
     setLoading(false);
   }, []);
 
-  async function handleLogin() {
-    const dataLogin = {
-      email: "gandalf@mail.com",
-      password: "123456",
-    };
+  async function handleLogin(item: userProps) {
+    const dataLogin = item;
 
     const {
       data: { token, name },
@@ -57,12 +60,19 @@ export function AuthProvider({ children }: authContexProviderProps) {
   }
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
 
   return (
     <AuthContext.Provider
-      value={{ authenticated, handleLogin, userName, loading, handleLogout }}
+      value={{
+        authenticated,
+        handleLogin,
+        userName,
+        loading,
+        setLoading,
+        handleLogout,
+      }}
     >
       {children}
     </AuthContext.Provider>

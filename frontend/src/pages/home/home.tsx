@@ -18,6 +18,7 @@ import flower from "../../assets/floweilustration.svg";
 
 import Moment from "react-moment";
 import RegisterScheduling from "../registerScheduling/register";
+import { Loading } from "../../components/loading/loading";
 
 interface HomeProps {
   date?: string;
@@ -33,18 +34,28 @@ interface HomeProps {
 
 const Home: React.FC = () => {
   const [dataUser, setDataUser] = useState<[HomeProps]>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     (async function () {
       try {
+        setLoading(false);
+
         const data = await API.get("/consultations?_expand=patient");
         const response = await data;
         setDataUser(response?.data);
       } catch (e) {
         console.error(e);
+        setLoading(false);
       }
     })();
-  }, []);
+  }, [showModal]);
+
+  function handleFaq() {
+    window.location.href = "https://www.conexasaude.com.br/#contato";
+  }
 
   function handleFormatDate(item: string | undefined) {
     if (item) {
@@ -57,8 +68,6 @@ const Home: React.FC = () => {
       );
     }
   }
-
-  const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
     setShowModal((prev) => !prev);
@@ -73,6 +82,7 @@ const Home: React.FC = () => {
       >
         <RegisterScheduling />
       </Modal>
+      {loading && <Loading />}
       <ContainerHome>
         <h1>Consultas</h1>
         {dataUser ? (
@@ -135,7 +145,9 @@ const Home: React.FC = () => {
         )}
 
         <HomeFooter>
-          <Button variant="secondary">Ajuda</Button>
+          <Button variant="secondary" onClick={handleFaq}>
+            Ajuda
+          </Button>
           <Button onClick={() => setShowModal(!showModal)}>
             Agendar Consulta
           </Button>

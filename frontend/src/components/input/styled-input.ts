@@ -24,15 +24,11 @@ export const ContainerInput = styled.div<InputProps>`
   }
   article {
     display: flex;
-    gap: 16px;
+
     cursor: pointer;
 
     svg {
       color: ${(props) => props.theme.colorIcon};
-    }
-
-    div {
-      width: auto;
     }
   }
   div {

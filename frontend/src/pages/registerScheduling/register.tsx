@@ -1,22 +1,44 @@
 import React, { useEffect, useState } from "react";
 import Button from "../../components/button/button";
+import { Loading } from "../../components/loading/loading";
 import { API } from "../../services/api";
 import { FlexBox } from "../../styles/global";
 import {
   ContainerRegisterScheduling,
-  ContentMainRegisterScheduling,
   RegisterFooter,
+  SucessRegister,
 } from "./styled-register";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { SpanError } from "../login/styled-login";
 
-export interface RegisterSchedulingProps {
+import { IoCalendarOutline } from "react-icons/io5";
+import moment from "moment";
+
+export interface RegisterSchedulingPropsSelect {
   id: number;
   first_name: string;
   last_name: string;
   email: string;
 }
 
+export interface RegisterSchedulingProps {
+  patientId: "string" | undefined;
+  date: "string" | undefined;
+}
+
 const RegisterScheduling: React.FC = () => {
-  const [dataUser, setDataUser] = useState<[RegisterSchedulingProps]>();
+  moment.locale("pt-br");
+  const [dataUser, setDataUser] = useState<[RegisterSchedulingPropsSelect]>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<RegisterSchedulingProps>();
+
+  const [errorLogin, setErrorLogin] = useState(false);
+  const [sucessRegister, setErroRegister] = useState(false);
 
   useEffect(() => {
     (async function () {
@@ -30,43 +52,106 @@ const RegisterScheduling: React.FC = () => {
     })();
   }, []);
 
-  function handleSelect(item: any) {
-    console.log("deu bom", item?.target?.value);
+  function showErrorLogin() {
+    setErrorLogin(true);
+
+    setTimeout(() => {
+      setErrorLogin(false);
+    }, 500);
   }
 
-  function handleDate(item: any) {
-    console.log("deu bom", item?.target?.value);
-  }
+  const onSubmit: SubmitHandler<RegisterSchedulingProps> = async (
+    data: RegisterSchedulingProps
+  ) => {
+    setLoading(true);
+
+    if (data?.date) {
+      var format = "llll Z";
+
+      const dataUser = {
+        patientId: data?.patientId,
+        date: moment(data?.date).format(format),
+      };
+
+      try {
+        setLoading(false);
+        await API.post("/consultations", dataUser);
+        setValue("date", undefined);
+        setValue("patientId", undefined);
+        setErroRegister(true);
+      } catch (e) {
+        setLoading(false);
+
+        showErrorLogin();
+      }
+    }
+  };
 
   return (
     <ContainerRegisterScheduling>
-      <ContentMainRegisterScheduling>
-        <FlexBox direction="column" gap="5px">
-          <label>Selecione o paciente</label>
-          <select onChange={handleSelect}>
-            {dataUser && (
-              <>
-                {dataUser.map((item) => {
-                  return (
-                    <option key={item?.id} value={item?.id}>
-                      {item?.first_name}
-                    </option>
-                  );
-                })}
-              </>
-            )}
-          </select>
-        </FlexBox>
-        <FlexBox direction="column" gap="5px">
-          <label>Selecione uma data</label>
-          <input type="datetime-local" onChange={handleDate} />
-        </FlexBox>
-      </ContentMainRegisterScheduling>
+      {loading && <Loading />}
 
-      <RegisterFooter>
-        <Button variant="secondary">Sair</Button>
-        <Button>Confirmar Agendamento</Button>
-      </RegisterFooter>
+      {sucessRegister ? (
+        <SucessRegister>
+          <FlexBox
+            align="center"
+            justify="center"
+            direction="column"
+            gap="30px"
+          >
+            Agendamento realizado com Sucesso!
+            <IoCalendarOutline />
+          </FlexBox>
+          <RegisterFooter>
+            <Button onClick={() => setErroRegister(false)}>
+              Realizar outro Agendamento
+            </Button>
+          </RegisterFooter>
+        </SucessRegister>
+      ) : (
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <FlexBox direction="column" gap="5px">
+            <label>Selecione o paciente</label>
+            <select {...register("patientId", { required: true })}>
+              {dataUser && (
+                <>
+                  {dataUser.map((item) => {
+                    return (
+                      <option key={item?.id} value={item?.id}>
+                        {item?.first_name}
+                      </option>
+                    );
+                  })}
+                </>
+              )}
+            </select>
+          </FlexBox>
+          <FlexBox direction="column" gap="5px">
+            <label>Selecione uma data</label>
+            <input
+              type="datetime-local"
+              {...register("date", { required: true })}
+            />
+          </FlexBox>
+
+          {errorLogin && (
+            <SpanError>
+              *Ops, houve um problema! Tente novamente em alguns minutos!
+            </SpanError>
+          )}
+
+          {errors?.patientId && (
+            <SpanError>*É necessário selecionar um paciente</SpanError>
+          )}
+          {errors?.date && (
+            <SpanError>*É necessário escolher uma data</SpanError>
+          )}
+
+          <RegisterFooter>
+            <Button>Confirmar Agendamento</Button>
+          </RegisterFooter>
+        </form>
+      )}
     </ContainerRegisterScheduling>
   );
 };

@@ -58,3 +58,9 @@ export const ContentRigthLogin = styled.div`
     }
   }
 `;
+
+export const SpanError = styled.div`
+  font-size: 12px;
+  color: #f44336b0;
+  font-weight: bold;
+`;
