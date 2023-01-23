@@ -1,10 +1,11 @@
 import {
   FieldErrorsImpl,
   FieldValues,
-  UseFormClearErrors,
   UseFormProps,
   UseFormRegister,
 } from "react-hook-form";
+import { FaRegQuestionCircle } from "react-icons/fa";
+import { IconBase, IconType } from "react-icons";
 
 interface DefaultFieldProps
   extends UseFormProps,
@@ -13,6 +14,7 @@ interface DefaultFieldProps
   formRegister: UseFormRegister<FieldValues>;
   errors: Partial<FieldErrorsImpl<{ [x: string]: any }>>;
   title?: string;
+  icon?: JSX.Element;
 }
 
 export function DefaultInput({
@@ -20,11 +22,15 @@ export function DefaultInput({
   formRegister,
   errors,
   title,
+  icon,
   ...rest
 }: DefaultFieldProps) {
   return (
     <div>
-      <p className="text-gray-500">{title}</p>
+      <div className="flex space-x-2 items-center mb-2">
+        <p className="text-gray-500">{title}</p>
+        {icon}
+      </div>
       <input
         className="border-b-2 w-full"
         {...formRegister(registerName)}
