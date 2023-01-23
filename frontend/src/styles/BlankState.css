@@ -1,0 +1,50 @@
+.blank-state {
+  width: 100%;
+  height: 100%;
+  max-width: 520px;
+  max-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.top > img {
+  width: 90px;
+  height: 60px;
+}
+
+.mid {
+  display: flex;
+  justify-content: center;
+}
+.mid > h2 {
+  font-family: Nunito, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color:#999392;
+
+  max-width: 206px;
+  text-align: center;
+}
+
+.bottom {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.bottom > img {
+  width: 81px;
+  height: 89px;
+}
+
+@media screen and (max-width: 890px) {
+  .blank-state {
+    padding-bottom: 20px;
+  }
+}

@@ -1,0 +1,49 @@
+.appointment-item {
+  display: flex;
+  align-items: center;
+}
+
+.patient {
+  width: 100%;
+}
+.patient > .full-name {
+  font-family: Nunito, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+
+  color: #575453;
+
+  margin: 0;
+  max-width: 218px;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.patient > .datetime {
+  font-family: Nunito, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  
+  color: #575453;
+  
+  margin: 0
+}
+
+.btn-finish {
+  font-family: Nunito, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 1px;
+  text-align: center;
+
+  width: 75px;
+  height: 40px;
+  border-radius: 8px;
+
+  cursor: pointer;  
+}

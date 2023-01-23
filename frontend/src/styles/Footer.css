@@ -1,0 +1,53 @@
+footer {
+  position: fixed;
+  margin-top: auto;
+  bottom: 0;
+  left: 0;
+  height: 72px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: transparent;
+}
+
+.footer {
+  height: 100%;
+  align-items: center;
+}
+
+.footer > button {
+  height: 40px;
+  border-radius: 8px;
+  font-family: Nunito, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  cursor: pointer;
+
+}
+
+#btn-new-appointment {
+  width: 154px;
+}
+
+#btn-help {
+  width: 75px;
+  padding: 11px 16px;
+}
+
+footer > hr {
+  display: none;
+}
+
+@media screen and (max-width: 560px) {
+  footer > hr {
+    display: block;
+    position: absolute;
+    top: 0;
+    margin: 0;
+    border: 1px solid #DAD2D0;
+    width: 100%;
+  }
+}

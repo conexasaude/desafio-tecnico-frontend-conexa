@@ -1,0 +1,141 @@
+.boxframe-illustration {
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 70px 0 70px;
+}
+
+.boxframe-illustration > img {
+  max-width: 337.52px;
+}
+
+/*section.login {
+  /*margin-top: 57px;
+  margin-bottom: 72px;
+  height: calc(100vh - 57px - 72px);
+}*/
+
+.boxframe-illustration > h1 {
+  font-family: Montserrat, sans-serif;
+  font-size: 52px;
+  line-height: 60px;
+  text-align: center;
+  letter-spacing: -2.5px;
+  color: #1C307F;
+  margin-bottom: 67px;
+}
+
+.control-frame-input {
+  max-width: 746px;
+  width: 100%;
+  text-align: center;
+  margin: 0 70px 0 70px;
+}
+
+.login-form {
+  height: 100%;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-label {
+  max-width: 235px;
+  width: 100%;
+  text-align: left;
+  margin-top: 16px;
+}
+.login-label > p {
+  margin: 0;
+  text-align: left;
+  font-family: Nunito, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #575453;
+}
+
+.login-label > input {
+  max-width: 211px;
+  width: 100%;
+
+  font-family: Nunito, sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 20px;
+  color: #999392;
+  background-color: #FFFFFB;
+  border: transparent;
+}
+
+.login-label > input:focus {
+  outline: none;
+}
+
+.login-label > hr {
+  width: 235px;
+  border: 1px solid #DAD2D0;
+}
+
+.login-form > button {
+  max-width: 235px;
+  width: 100%;
+  height: 40px;
+  background-color: #2E50D4;
+  margin-top: 60px;
+  border-radius: 8px;
+
+  font-family: Nunito, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  
+  border: none;
+  cursor: pointer;
+}
+
+.login-form span {
+  margin: 0;
+  cursor: pointer;
+}
+
+.login-form span > img {
+  max-width: 16px;
+  height: 16px;
+}
+
+@media screen and (max-width: 890px){
+  .boxframe-illustration > img {
+    display: none;
+  }
+
+  section.login {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .boxframe-illustration > h1 {
+    font-size: 32px;
+    line-height: 39px;
+    letter-spacing: -1.5px;
+    color: #210080;
+    margin-bottom: 20px;
+  
+  }
+
+  .login-form {
+    margin-top: 0;
+  }
+
+  .login-form > button {
+    margin-top: 30px;
+  }
+}
