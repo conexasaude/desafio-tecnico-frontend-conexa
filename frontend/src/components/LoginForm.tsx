@@ -4,7 +4,7 @@ import Container from "./Container";
 import { DefaultInput } from "./DefaultInput";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { createRef, useRef, useState } from "react";
+import { createRef, useState } from "react";
 
 export function LoginForm() {
   const { register, handleSubmit, errors } = useFormResolver(loginSchema);
@@ -45,6 +45,7 @@ export function LoginForm() {
             errors={errors}
             ref={passwordInputRef}
             type="password"
+            tooltipText="Senha de no minimo 8 digitos criada ao se registrar"
           />
           <div
             className="absolute right-0 bottom-3 text-2xl text-gray-500 cursor-pointer"
