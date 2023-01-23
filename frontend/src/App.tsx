@@ -1,12 +1,9 @@
-import { useState } from "react";
-import "./App.css";
+import "./styles/global.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div>
-      <div></div>
+      <div>OK</div>
     </div>
   );
 }
