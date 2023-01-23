@@ -3,11 +3,22 @@ import { loginSchema } from "../schemas/login";
 import Container from "./Container";
 import { DefaultInput } from "./DefaultInput";
 import { FaRegQuestionCircle } from "react-icons/fa";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { createRef, useRef, useState } from "react";
 
 export function LoginForm() {
   const { register, handleSubmit, errors } = useFormResolver(loginSchema);
+  const [showPassword, setShowPassword] = useState(false);
+  const passwordInputRef = createRef<HTMLInputElement>();
 
   async function handleLogin() {}
+
+  async function toggleShowPassword() {
+    setShowPassword(!showPassword);
+    passwordInputRef.current.type == "password"
+      ? (passwordInputRef.current.type = "text")
+      : (passwordInputRef.current.type = "password");
+  }
 
   return (
     <Container className="flex flex-col h-screen w-full items-center justify-center space-y-20">
@@ -24,16 +35,28 @@ export function LoginForm() {
           errors={errors}
         />
 
-        <DefaultInput
-          icon={<FaRegQuestionCircle className="text-lg" />}
-          title="Senha"
-          formRegister={register}
-          registerName="password"
-          placeholder="Digite sua senha"
-          errors={errors}
-        />
+        <div className="relative">
+          <DefaultInput
+            icon={<FaRegQuestionCircle className="text-lg text-gray-500" />}
+            title="Senha"
+            formRegister={register}
+            registerName="password"
+            placeholder="Digite sua senha"
+            errors={errors}
+            ref={passwordInputRef}
+            type="password"
+          />
+          <div
+            className="absolute right-0 bottom-3 text-2xl text-gray-500 cursor-pointer"
+            onClick={toggleShowPassword}
+          >
+            {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+          </div>
+        </div>
 
-        <button className="filled">Entrar</button>
+        <button className="filled" type="submit">
+          Entrar
+        </button>
       </form>
     </Container>
   );

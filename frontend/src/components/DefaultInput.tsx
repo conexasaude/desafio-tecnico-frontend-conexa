@@ -1,11 +1,10 @@
+import { forwardRef, RefObject } from "react";
 import {
   FieldErrorsImpl,
   FieldValues,
   UseFormProps,
   UseFormRegister,
 } from "react-hook-form";
-import { FaRegQuestionCircle } from "react-icons/fa";
-import { IconBase, IconType } from "react-icons";
 
 interface DefaultFieldProps
   extends UseFormProps,
@@ -15,16 +14,20 @@ interface DefaultFieldProps
   errors: Partial<FieldErrorsImpl<{ [x: string]: any }>>;
   title?: string;
   icon?: JSX.Element;
+  type?: string;
 }
 
-export function DefaultInput({
-  registerName,
-  formRegister,
-  errors,
-  title,
-  icon,
-  ...rest
-}: DefaultFieldProps) {
+const DefaultInputWrapper = (
+  {
+    registerName,
+    formRegister,
+    errors,
+    title,
+    icon,
+    type = "text",
+  }: DefaultFieldProps,
+  ref
+) => {
   return (
     <div>
       <div className="flex space-x-2 items-center mb-2">
@@ -32,13 +35,18 @@ export function DefaultInput({
         {icon}
       </div>
       <input
+        type={type}
         className="border-b-2 w-full"
         {...formRegister(registerName)}
-        {...rest}
+        ref={ref}
       />
       {errors.name && errors.name.type === "required" && (
         <span>E-mail Ncessário</span>
       )}
     </div>
   );
-}
+};
+
+export const DefaultInput = forwardRef<HTMLInputElement, DefaultFieldProps>(
+  DefaultInputWrapper
+);
