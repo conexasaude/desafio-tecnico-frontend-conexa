@@ -2,6 +2,7 @@ import { Appointments } from "../components/Appointments";
 import Container from "../components/Container";
 import { Footer } from "../components/Footer";
 import Header from "../components/Header";
+import { Protected } from "../components/Protected";
 import { useRedirectLogin } from "../hooks/RedirectLogin";
 
 export function Dashboard() {
@@ -99,7 +100,7 @@ export function Dashboard() {
   ];
 
   return (
-    <>
+    <Protected>
       <Header session />
       <Container className="flex flex-col h-[calc(100vh-80px)]">
         <p className="text-6xl text-primaryDark font-bold mt-10">Consultas</p>
@@ -108,6 +109,6 @@ export function Dashboard() {
         </div>
         <Footer />
       </Container>
-    </>
+    </Protected>
   );
 }
