@@ -6,7 +6,7 @@ export function Appointments({ appointments }: { appointments: AppointmentProps[
     <div className="flex flex-col space-y-5 w-full items-center">
       <p className="text-lg text-gray-800">{appointments.length} consultas agendadas</p>
 
-      <div className="w-full max-w-[600px] space-y-10 overflow-y-auto max-h-[400px]">
+      <div className="w-full max-w-[600px] space-y-10 overflow-y-auto max-h-[600px] pb-10">
         {appointments.map((appointment) => (
           <AppointmentCard appointment={appointment} />
         ))}
