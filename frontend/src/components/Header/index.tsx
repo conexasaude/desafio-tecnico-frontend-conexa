@@ -6,7 +6,7 @@ interface HeaderProps {
 
 function Header({ session }: HeaderProps) {
   return (
-    <header className="h-20 drop-shadow-lg bg-white">
+    <header className="h-20 drop-shadow-lg bg-white fixed top-0 w-full">
       <Container className="flex items-center h-full p-5 justify-center lg:justify-start mr-auto">
         <img src="/logo.png" alt="logo" className="h-10" />
         {session && <UserArea />}
