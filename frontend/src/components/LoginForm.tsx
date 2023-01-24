@@ -21,44 +21,38 @@ export function LoginForm() {
   }
 
   return (
-    <Container className="flex flex-col h-screen w-full items-center justify-center space-y-20">
-      <h1 className="text-primaryDark text-7xl font-bold">Faça Login</h1>
-      <form
-        className="flex flex-col space-y-10 w-full max-w-lg"
-        onSubmit={handleSubmit(handleLogin)}
-      >
+    <form className="flex flex-col space-y-10 w-full max-w-lg" onSubmit={handleSubmit(handleLogin)}>
+      <DefaultInput
+        title="E-mail"
+        formRegister={register}
+        registerName="email"
+        placeholder="Digite seu e-mail"
+        errors={errors}
+      />
+
+      <div className="relative">
         <DefaultInput
-          title="E-mail"
+          icon={<FaRegQuestionCircle className="text-lg text-gray-500" />}
+          title="Senha"
           formRegister={register}
-          registerName="email"
-          placeholder="Digite seu e-mail"
+          registerName="password"
+          placeholder="Digite sua senha"
           errors={errors}
+          ref={passwordInputRef}
+          type="password"
+          tooltipText="Senha de no minimo 8 digitos criada ao se registrar"
         />
-
-        <div className="relative">
-          <DefaultInput
-            icon={<FaRegQuestionCircle className="text-lg text-gray-500" />}
-            title="Senha"
-            formRegister={register}
-            registerName="password"
-            placeholder="Digite sua senha"
-            errors={errors}
-            ref={passwordInputRef}
-            type="password"
-            tooltipText="Senha de no minimo 8 digitos criada ao se registrar"
-          />
-          <div
-            className="absolute right-0 bottom-3 text-2xl text-gray-500 cursor-pointer"
-            onClick={() => toggleShowPassword()}
-          >
-            {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
-          </div>
+        <div
+          className="absolute right-0 bottom-3 text-2xl text-gray-500 cursor-pointer"
+          onClick={() => toggleShowPassword()}
+        >
+          {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
         </div>
+      </div>
 
-        <button className="filled" type="submit">
-          Entrar
-        </button>
-      </form>
-    </Container>
+      <button className="filled" type="submit">
+        Entrar
+      </button>
+    </form>
   );
 }
