@@ -1,24 +1,36 @@
 import { useFormResolver } from "../hooks/useFormResolver";
 import { loginSchema } from "../schemas/login";
-import Container from "./Container";
 import { DefaultInput } from "./DefaultInput";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { createRef, useRef, useState } from "react";
-import axios from "axios";
+import { useRef, useState } from "react";
 import { loginProps } from "../types/auth";
+import { api } from "../config/axios";
+import { useUser } from "../context/user";
+import { notify } from "../utils/notify";
+import { ToastContainer } from "react-toastify";
+import { useRedirectLogin } from "../hooks/RedirectLogin";
 
 export function LoginForm() {
   const { register, handleSubmit, errors } = useFormResolver(loginSchema);
   const [showPassword, setShowPassword] = useState(false);
   const passwordInputUseRef = useRef<HTMLInputElement | null>(null);
+  const { setName } = useUser();
 
-  async function handleLogin(data: loginProps) {
-    console.log(data);
+  useRedirectLogin();
+
+  async function handleLogin(formData: loginProps) {
     try {
-      const res = axios.post("/login", { data });
-      console.log(res);
-    } catch (error) {}
+      const res = await api.post("/login", { ...formData });
+
+      if (res.status == 200) {
+        localStorage.setItem("bearer", res.data.token);
+        setName(res.data.name);
+        return;
+      }
+    } catch (error) {
+      notify("Erro ao fazer login", "error");
+    }
   }
 
   async function toggleShowPassword() {
@@ -29,39 +41,45 @@ export function LoginForm() {
   }
 
   return (
-    <form className="flex flex-col space-y-10 w-full max-w-lg" onSubmit={handleSubmit(handleLogin)}>
-      <DefaultInput
-        title="E-mail"
-        formRegister={register}
-        registerName="email"
-        placeholder="Digite seu e-mail"
-        errors={errors}
-      />
-
-      <div className="relative">
+    <>
+      <form
+        className="flex flex-col space-y-10 w-full max-w-lg"
+        onSubmit={handleSubmit(handleLogin)}
+      >
         <DefaultInput
-          icon={<FaRegQuestionCircle className="text-lg text-gray-500" />}
-          title="Senha"
+          title="E-mail"
           formRegister={register}
-          registerName="password"
-          placeholder="Digite sua senha"
+          registerName="email"
+          placeholder="Digite seu e-mail"
           errors={errors}
-          reactRef={passwordInputUseRef}
-          type="password"
-          tooltipText="Senha de no minimo 8 digitos criada ao se registrar"
         />
 
-        <div
-          className="absolute right-0 bottom-3 text-2xl text-gray-500 cursor-pointer"
-          onClick={() => toggleShowPassword()}
-        >
-          {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
-        </div>
-      </div>
+        <div className="relative">
+          <DefaultInput
+            icon={<FaRegQuestionCircle className="text-lg text-gray-500" />}
+            title="Senha"
+            formRegister={register}
+            registerName="password"
+            placeholder="Digite sua senha"
+            errors={errors}
+            reactRef={passwordInputUseRef}
+            type="password"
+            tooltipText="Senha de no minimo 8 digitos criada ao se registrar"
+          />
 
-      <button className="filled" type="submit">
-        Entrar
-      </button>
-    </form>
+          <div
+            className="absolute right-0 bottom-3 text-2xl text-gray-500 cursor-pointer"
+            onClick={() => toggleShowPassword()}
+          >
+            {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+          </div>
+        </div>
+
+        <button className="filled" type="submit">
+          Entrar
+        </button>
+      </form>
+      <ToastContainer />
+    </>
   );
 }
