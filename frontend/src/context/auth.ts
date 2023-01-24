@@ -6,6 +6,7 @@ interface UserProps {
   name: string;
   setName: (name: string) => void;
   login: (data: loginProps) => Promise<string>;
+  logout: (data: loginProps) => void;
 }
 
 export const useAuth = create<UserProps>((set) => ({
@@ -20,7 +21,11 @@ export const useAuth = create<UserProps>((set) => ({
 
     if (res.status == 200) {
       localStorage.setItem("bearer", res.data.token);
+      set((state) => ({ ...state, name: res.data.name }));
       return res.data.name;
     }
+  },
+  logout: () => {
+    localStorage.setItem("bearer", "");
   },
 }));
