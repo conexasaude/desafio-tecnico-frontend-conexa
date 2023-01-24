@@ -1,5 +1,5 @@
 import moment from "moment";
-import { AppointmentProps } from "../../../types/appointment";
+import { AppointmentProps } from "../../types/appointment";
 import { textSlicer } from "../../utils/textSlicer";
 
 export function AppointmentCard({ appointment }: { appointment: AppointmentProps }) {

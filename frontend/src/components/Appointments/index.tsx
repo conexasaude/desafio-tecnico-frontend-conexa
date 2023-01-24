@@ -1,4 +1,4 @@
-import { AppointmentProps } from "../../../types/appointment";
+import { AppointmentProps } from "../../types/appointment";
 import { AppointmentCard } from "./AppointmentCard";
 
 export function Appointments({ appointments }: { appointments: AppointmentProps[] }) {
