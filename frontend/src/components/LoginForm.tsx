@@ -4,20 +4,28 @@ import Container from "./Container";
 import { DefaultInput } from "./DefaultInput";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { createRef, useState } from "react";
+import { createRef, useRef, useState } from "react";
+import axios from "axios";
+import { loginProps } from "../types/auth";
 
 export function LoginForm() {
   const { register, handleSubmit, errors } = useFormResolver(loginSchema);
   const [showPassword, setShowPassword] = useState(false);
-  const passwordInputRef = createRef<HTMLInputElement>();
+  const passwordInputUseRef = useRef<HTMLInputElement | null>(null);
 
-  async function handleLogin() {}
+  async function handleLogin(data: loginProps) {
+    console.log(data);
+    try {
+      const res = axios.post("/login", { data });
+      console.log(res);
+    } catch (error) {}
+  }
 
   async function toggleShowPassword() {
     setShowPassword(!showPassword);
-    passwordInputRef.current.type == "password"
-      ? (passwordInputRef.current.type = "text")
-      : (passwordInputRef.current.type = "password");
+    passwordInputUseRef.current.type == "password"
+      ? (passwordInputUseRef.current.type = "text")
+      : (passwordInputUseRef.current.type = "password");
   }
 
   return (
@@ -38,10 +46,11 @@ export function LoginForm() {
           registerName="password"
           placeholder="Digite sua senha"
           errors={errors}
-          ref={passwordInputRef}
+          reactRef={passwordInputUseRef}
           type="password"
           tooltipText="Senha de no minimo 8 digitos criada ao se registrar"
         />
+
         <div
           className="absolute right-0 bottom-3 text-2xl text-gray-500 cursor-pointer"
           onClick={() => toggleShowPassword()}

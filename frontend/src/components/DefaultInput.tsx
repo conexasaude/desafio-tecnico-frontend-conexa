@@ -1,4 +1,4 @@
-import { createRef, forwardRef, RefObject } from "react";
+import { createRef, forwardRef, MutableRefObject, RefObject } from "react";
 import { FieldErrorsImpl, FieldValues, UseFormProps, UseFormRegister } from "react-hook-form";
 import { Tooltip } from "./ToolTip";
 
@@ -6,25 +6,25 @@ interface DefaultFieldProps extends UseFormProps, React.HTMLAttributes<HTMLInput
   registerName: string;
   formRegister: UseFormRegister<FieldValues>;
   errors: Partial<FieldErrorsImpl<{ [x: string]: any }>>;
+  reactRef?: MutableRefObject<HTMLInputElement>;
   title?: string;
   icon?: JSX.Element;
   type?: string;
   tooltipText?: string;
 }
 
-const DefaultInputWrapper = (
-  {
-    registerName,
-    formRegister,
-    errors,
-    title,
-    icon,
-    tooltipText,
-    type = "text",
-  }: DefaultFieldProps,
-  ref
-) => {
+export function DefaultInput({
+  registerName,
+  formRegister,
+  errors,
+  title,
+  icon,
+  tooltipText,
+  type = "text",
+  reactRef,
+}: DefaultFieldProps) {
   const toolTipRef = createRef<HTMLDivElement>();
+  const { ref } = formRegister(registerName);
 
   return (
     <div>
@@ -43,11 +43,19 @@ const DefaultInputWrapper = (
         </div>
       </div>
 
-      <input type={type} className="border-b-2 w-full" {...formRegister(registerName)} ref={ref} />
+      <input
+        type={type}
+        className="border-b-2 w-full"
+        {...formRegister(registerName)}
+        ref={(e) => {
+          ref(e);
+          if (reactRef) reactRef.current = e;
+        }}
+      />
 
-      {errors.name && errors.name.type === "required" && <span>E-mail Ncessário</span>}
+      {errors[registerName]?.message && (
+        <span className="text-red-400">{errors[registerName]?.message.toString()}</span>
+      )}
     </div>
   );
-};
-
-export const DefaultInput = forwardRef<HTMLInputElement, DefaultFieldProps>(DefaultInputWrapper);
+}
