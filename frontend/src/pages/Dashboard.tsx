@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import { Appointments } from "../components/Appointments";
 import Container from "../components/Container";
 import { Footer } from "../components/Footer";
@@ -152,6 +153,7 @@ export function Dashboard() {
         </div>
       </Container>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }

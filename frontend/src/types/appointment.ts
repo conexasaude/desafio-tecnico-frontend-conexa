@@ -13,3 +13,14 @@ export interface AppointmentProps {
   date: MomentInput;
   patient: PatientProps;
 }
+
+export interface NewAppointmentResponseProps {
+  id: number;
+  patientId: number;
+  date: string;
+}
+
+export interface NewAppointmentProps {
+  patientId: number;
+  date: string;
+}
