@@ -1,6 +1,7 @@
 import { Appointments } from "../components/Appointments";
 import Container from "../components/Container";
 import { EmpityAppointments } from "../components/EmpityAppointments";
+import { Footer } from "../components/Footer";
 import Header from "../components/Header";
 
 export function Dashboard() {
@@ -54,11 +55,12 @@ export function Dashboard() {
   return (
     <>
       <Header session />
-      <Container className="py-10 felx flex-col h-[calc(100vh-80px)]">
-        <p className="text-6xl text-primaryDark font-bold">Consultas</p>
+      <Container className="flex flex-col h-[calc(100vh-80px)]">
+        <p className="text-6xl text-primaryDark font-bold mt-10">Consultas</p>
         <div className="flex items-center justify-center h-full">
           <Appointments appointments={appointments} />
         </div>
+        <Footer />
       </Container>
     </>
   );
