@@ -1,15 +1,8 @@
 import { createRef, forwardRef, RefObject } from "react";
-import {
-  FieldErrorsImpl,
-  FieldValues,
-  UseFormProps,
-  UseFormRegister,
-} from "react-hook-form";
+import { FieldErrorsImpl, FieldValues, UseFormProps, UseFormRegister } from "react-hook-form";
 import { Tooltip } from "./ToolTip";
 
-interface DefaultFieldProps
-  extends UseFormProps,
-    React.HTMLAttributes<HTMLInputElement> {
+interface DefaultFieldProps extends UseFormProps, React.HTMLAttributes<HTMLInputElement> {
   registerName: string;
   formRegister: UseFormRegister<FieldValues>;
   errors: Partial<FieldErrorsImpl<{ [x: string]: any }>>;
@@ -50,20 +43,11 @@ const DefaultInputWrapper = (
         </div>
       </div>
 
-      <input
-        type={type}
-        className="border-b-2 w-full"
-        {...formRegister(registerName)}
-        ref={ref}
-      />
+      <input type={type} className="border-b-2 w-full" {...formRegister(registerName)} ref={ref} />
 
-      {errors.name && errors.name.type === "required" && (
-        <span>E-mail Ncessário</span>
-      )}
+      {errors.name && errors.name.type === "required" && <span>E-mail Ncessário</span>}
     </div>
   );
 };
 
-export const DefaultInput = forwardRef<HTMLInputElement, DefaultFieldProps>(
-  DefaultInputWrapper
-);
+export const DefaultInput = forwardRef<HTMLInputElement, DefaultFieldProps>(DefaultInputWrapper);

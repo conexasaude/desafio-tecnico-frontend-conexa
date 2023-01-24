@@ -49,7 +49,7 @@ export function LoginForm() {
           />
           <div
             className="absolute right-0 bottom-3 text-2xl text-gray-500 cursor-pointer"
-            onClick={toggleShowPassword}
+            onClick={() => toggleShowPassword()}
           >
             {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
           </div>
