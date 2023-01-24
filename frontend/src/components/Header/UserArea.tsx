@@ -1,11 +1,7 @@
 import { useAuth } from "../../context/auth";
 
-interface UserAreaProps {
-  name: string;
-}
-
-export function UserArea({ name }: UserAreaProps) {
-  const { logout } = useAuth();
+export function UserArea() {
+  const { logout, name } = useAuth();
 
   return (
     <div className="flex gap-2 items-center w-full text-end justify-end">
