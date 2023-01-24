@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  html {
+    font-family: "Nunito";
+  }
+
   body {
     @apply bg-secondary;
   }
