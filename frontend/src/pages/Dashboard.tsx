@@ -1,10 +1,12 @@
 import { Appointments } from "../components/Appointments";
 import Container from "../components/Container";
-import { EmpityAppointments } from "../components/EmpityAppointments";
 import { Footer } from "../components/Footer";
 import Header from "../components/Header";
+import { useRedirectLogin } from "../hooks/RedirectLogin";
 
 export function Dashboard() {
+  useRedirectLogin();
+
   const appointments = [
     {
       id: 1,

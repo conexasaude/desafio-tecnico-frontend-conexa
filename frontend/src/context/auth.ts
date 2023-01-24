@@ -1,0 +1,26 @@
+import { create } from "zustand";
+import { api } from "../config/axios";
+import { loginProps } from "../types/auth";
+
+interface UserProps {
+  name: string;
+  setName: (name: string) => void;
+  login: (data: loginProps) => Promise<string>;
+}
+
+export const useAuth = create<UserProps>((set) => ({
+  name: "",
+  setName: (name) =>
+    set((state) => ({
+      ...state,
+      name,
+    })),
+  login: async (data) => {
+    const res = await api.post("/login", { ...data });
+
+    if (res.status == 200) {
+      localStorage.setItem("bearer", res.data.token);
+      return res.data.name;
+    }
+  },
+}));

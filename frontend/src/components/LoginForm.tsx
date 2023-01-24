@@ -6,7 +6,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useRef, useState } from "react";
 import { loginProps } from "../types/auth";
 import { api } from "../config/axios";
-import { useUser } from "../context/user";
+import { useAuth } from "../context/auth";
 import { notify } from "../utils/notify";
 import { ToastContainer } from "react-toastify";
 import { useRedirectLogin } from "../hooks/RedirectLogin";
@@ -15,19 +15,14 @@ export function LoginForm() {
   const { register, handleSubmit, errors } = useFormResolver(loginSchema);
   const [showPassword, setShowPassword] = useState(false);
   const passwordInputUseRef = useRef<HTMLInputElement | null>(null);
-  const { setName } = useUser();
+  const { setName, login } = useAuth();
 
   useRedirectLogin();
 
   async function handleLogin(formData: loginProps) {
     try {
-      const res = await api.post("/login", { ...formData });
-
-      if (res.status == 200) {
-        localStorage.setItem("bearer", res.data.token);
-        setName(res.data.name);
-        return;
-      }
+      const name = await login(formData);
+      setName(name);
     } catch (error) {
       notify("Erro ao fazer login", "error");
     }
