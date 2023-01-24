@@ -12,10 +12,10 @@
   }
 
   button.default {
-    @apply border-solid border-2 border-primary rounded-lg p-2 h-14 text-primary hover:bg-primary hover:text-white transition-all w-full;
+    @apply border-solid border-2 border-primary rounded-lg p-2 h-14 text-primary hover:bg-primary hover:text-white transition-all;
   }
 
   button.filled {
-    @apply bg-primary text-white rounded-lg p-2 h-14 hover:bg-primaryDark transition-all w-full;
+    @apply bg-primary text-white rounded-lg p-2 h-14 hover:bg-primaryDark transition-all;
   }
 }
