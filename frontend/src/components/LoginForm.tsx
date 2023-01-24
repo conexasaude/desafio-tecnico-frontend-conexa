@@ -21,7 +21,7 @@ export function LoginForm() {
 
   async function handleLogin(formData: loginProps) {
     try {
-      const name = await login(formData);
+      await login(formData);
     } catch (error) {
       notify("Erro ao fazer login", "error");
     }
