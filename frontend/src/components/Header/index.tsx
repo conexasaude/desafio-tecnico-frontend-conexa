@@ -1,15 +1,18 @@
+import { useAuth } from "../../context/auth";
 import Container from "../Container";
 import { UserArea } from "./UserArea";
 interface HeaderProps {
-  session?: boolean;
+  styles?: string;
 }
 
-function Header({ session }: HeaderProps) {
+function Header({ styles }: HeaderProps) {
+  const { name } = useAuth();
+
   return (
-    <header className="h-20 drop-shadow-lg bg-white fixed top-0 w-full">
+    <header className={`h-20 drop-shadow-lg bg-white top-0 w-full ${styles}`}>
       <Container className="flex items-center h-full p-5 justify-center lg:justify-start mr-auto">
         <img src="/logo.png" alt="logo" className="h-10" />
-        {session && <UserArea />}
+        {name && <UserArea />}
       </Container>
     </header>
   );
