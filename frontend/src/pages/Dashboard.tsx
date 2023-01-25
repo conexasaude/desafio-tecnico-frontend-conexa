@@ -31,17 +31,19 @@ export function Dashboard() {
   }, []);
 
   return (
-    <div className="relative">
-      <Header styles="fixed" />
-      <Container className="flex flex-col h-[calc(100vh-180px)] mt-[80px]">
-        <p className="text-6xl text-primaryDark font-bold mt-10">Consultas</p>
-        <div className="flex items-center justify-center h-full">
-          <Appointments appointments={appointments} />
-        </div>
-      </Container>
-      <Footer />
+    <>
+      <div className="relative">
+        <Header styles="fixed" />
+        <Container className="flex flex-col h-[calc(100vh-180px)] mt-[80px]">
+          <p className="text-6xl text-primaryDark font-bold mt-10">Consultas</p>
+          <div className="flex items-center justify-center h-full">
+            <Appointments appointments={appointments} />
+          </div>
+        </Container>
+        <Footer />
+        <ToastContainer />
+      </div>
       <AppointmentModal />
-      <ToastContainer />
-    </div>
+    </>
   );
 }

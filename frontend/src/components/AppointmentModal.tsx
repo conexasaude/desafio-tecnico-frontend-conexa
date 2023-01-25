@@ -51,7 +51,7 @@ export function AppointmentModal() {
   }
 
   function patientOptions() {
-    return optionsMaker(patients, ["first_name", "last_name"]);
+    return optionsMaker<PatientProps>(patients, ["first_name", "last_name"]);
   }
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export function AppointmentModal() {
         isOpen ? "visible" : "invisible"
       }`}
     >
-      <Container className="relative w-full h-full flex flex-col items-center justify-center space-y-5">
+      <Container className="w-full h-full flex flex-col items-center justify-center space-y-5">
         <MdClose
           className="absolute right-10 top-10 text-4xl cursor-pointer text-primary"
           onClick={() => toggle()}

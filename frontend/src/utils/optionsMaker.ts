@@ -1,7 +1,5 @@
-import { GroupBase, Options, OptionsOrGroups } from "react-select";
-
-export function optionsMaker(items: unknown[], labels: string[]) {
-  return items.map((item) => ({
+export function optionsMaker<T>(items: T[], labels: string[]) {
+  return items.map((item: T) => ({
     value: item,
     label:
       labels.length > 1
