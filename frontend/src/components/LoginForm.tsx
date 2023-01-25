@@ -9,6 +9,7 @@ import { useAuth } from "../context/auth";
 import { notify } from "../utils/notify";
 import { ToastContainer } from "react-toastify";
 import { useRedirectLogin } from "../hooks/RedirectLogin";
+import { motion } from "framer-motion";
 
 export function LoginForm() {
   const { register, handleSubmit, errors } = useFormResolver(loginSchema);
