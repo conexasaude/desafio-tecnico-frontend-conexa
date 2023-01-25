@@ -9,6 +9,7 @@ import { useAppointment } from "../context/appointment";
 import { useRedirectLogin } from "../hooks/RedirectLogin";
 import { AppointmentProps } from "../types/appointment";
 import { notify } from "../utils/notify";
+import { motion } from "framer-motion";
 
 export function Dashboard() {
   const { fetchAppointments } = useAppointment();
@@ -35,7 +36,9 @@ export function Dashboard() {
       <div className="relative">
         <Header styles="fixed" />
         <Container className="flex flex-col h-[calc(100vh-180px)] mt-[80px]">
-          <p className="text-6xl text-primaryDark font-bold mt-10">Consultas</p>
+          <motion.div initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
+            <p className="text-6xl text-primaryDark font-bold mt-10">Consultas</p>
+          </motion.div>
           <div className="flex items-center justify-center h-full">
             <Appointments appointments={appointments} />
           </div>

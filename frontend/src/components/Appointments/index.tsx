@@ -18,7 +18,7 @@ export function Appointments({ appointments }: { appointments: AppointmentProps[
 
       <div className="w-full max-w-[600px] space-y-10 overflow-y-auto pb-40">
         {appointments?.map((appointment, index) => (
-          <FadeEnterMotion delay={index / 10}>
+          <FadeEnterMotion delay={index / 10 / 2}>
             <AppointmentCard appointment={appointment} />
           </FadeEnterMotion>
         ))}
