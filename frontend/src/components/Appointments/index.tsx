@@ -1,5 +1,6 @@
 import { AppointmentProps } from "../../types/appointment";
 import { AnimateNumber } from "../../utils/animateNumber";
+import { FadeEnterMotion } from "../FadeEnterMotion";
 import { AppointmentCard } from "./AppointmentCard";
 
 export function Appointments({ appointments }: { appointments: AppointmentProps[] }) {
@@ -13,8 +14,10 @@ export function Appointments({ appointments }: { appointments: AppointmentProps[
       </p>
 
       <div className="w-full max-w-[600px] space-y-10 overflow-y-auto pb-40">
-        {appointments?.map((appointment) => (
-          <AppointmentCard appointment={appointment} />
+        {appointments?.map((appointment, index) => (
+          <FadeEnterMotion delay={index / 10}>
+            <AppointmentCard appointment={appointment} />
+          </FadeEnterMotion>
         ))}
       </div>
     </div>
