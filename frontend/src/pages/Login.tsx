@@ -2,8 +2,11 @@ import Container from "../components/Container";
 import Header from "../components/Header";
 import { LoginForm } from "../components/LoginForm";
 import { motion } from "framer-motion";
+import { useRedirectLogin } from "../hooks/RedirectLogin";
 
 export function Login() {
+  useRedirectLogin();
+
   return (
     <div className="flex flex-col">
       <Header />
