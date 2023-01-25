@@ -1,14 +1,18 @@
 import { create } from "zustand";
 import { api } from "../config/axios";
-import { NewAppointmentProps, NewAppointmentResponseProps } from "../types/appointment";
+import {
+  AppointmentProps,
+  NewAppointmentProps,
+  NewAppointmentResponseProps,
+} from "../types/appointment";
 
-interface AppointmentProps {
+interface AppointmentStoreProps {
   appointments: AppointmentProps[];
   fetchAppointments: () => Promise<AppointmentProps[]>;
   createAppointment: (data: NewAppointmentProps) => Promise<NewAppointmentResponseProps>;
 }
 
-export const useAppointment = create<AppointmentProps>((set, get) => ({
+export const useAppointment = create<AppointmentStoreProps>((set, get) => ({
   appointments: [],
   fetchAppointments: async () => {
     try {

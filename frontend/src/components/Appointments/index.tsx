@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { AppointmentProps } from "../../types/appointment";
 import { AppointmentCard } from "./AppointmentCard";
 
