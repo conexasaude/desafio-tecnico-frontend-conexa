@@ -1,31 +1,39 @@
 import { create } from "zustand";
 import { api } from "../config/axios";
 import { NewAppointmentProps, NewAppointmentResponseProps } from "../types/appointment";
-import { loginProps } from "../types/auth";
 
 interface AppointmentProps {
-  appointments: [];
-  fetchAppointments: () => Promise<AppointmentProps>;
+  appointments: AppointmentProps[];
+  fetchAppointments: () => Promise<AppointmentProps[]>;
   createAppointment: (data: NewAppointmentProps) => Promise<NewAppointmentResponseProps>;
 }
 
-export const useAppointment = create<AppointmentProps>(() => ({
+export const useAppointment = create<AppointmentProps>((set, get) => ({
   appointments: [],
   fetchAppointments: async () => {
-    const res = await api.get("/consultations?_expand=patient");
+    try {
+      const res = await api.get("/consultations?_expand=patient");
 
-    if (res.status == 200) {
-      return res.data;
+      if (res.status == 200) {
+        return res.data;
+      }
+      throw new Error("Error when fetch appointments");
+    } catch (error) {
+      throw new Error("Error when fetch appointments");
     }
-
-    throw new Error("Error when fetch appointments");
   },
-  createAppointment: async () => {
-    const res = await api.post("/consultations", {
-      patientId: 1,
-      date: "Fri Feb 05 2021 10:20:00 GMT-0300 (Brasilia Standard Time)",
-    });
+  createAppointment: async (data: NewAppointmentProps) => {
+    try {
+      const res = await api.post("/consultations", { ...data });
 
-    return res.data;
+      if (res.data) {
+        get().fetchAppointments();
+        return res.data;
+      }
+
+      throw new Error("Error when create appointment");
+    } catch (error) {
+      throw new Error("Error when create appointment");
+    }
   },
 }));

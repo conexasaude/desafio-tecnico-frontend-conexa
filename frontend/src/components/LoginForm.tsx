@@ -5,7 +5,6 @@ import { FaRegQuestionCircle } from "react-icons/fa";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useRef, useState } from "react";
 import { loginProps } from "../types/auth";
-import { api } from "../config/axios";
 import { useAuth } from "../context/auth";
 import { notify } from "../utils/notify";
 import { ToastContainer } from "react-toastify";
@@ -15,7 +14,7 @@ export function LoginForm() {
   const { register, handleSubmit, errors } = useFormResolver(loginSchema);
   const [showPassword, setShowPassword] = useState(false);
   const passwordInputUseRef = useRef<HTMLInputElement | null>(null);
-  const { setName, login } = useAuth();
+  const { login } = useAuth();
 
   useRedirectLogin();
 

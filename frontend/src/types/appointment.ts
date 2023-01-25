@@ -17,10 +17,10 @@ export interface AppointmentProps {
 export interface NewAppointmentResponseProps {
   id: number;
   patientId: number;
-  date: string;
+  date: Date;
 }
 
 export interface NewAppointmentProps {
   patientId: number;
-  date: string;
+  date: Date;
 }
