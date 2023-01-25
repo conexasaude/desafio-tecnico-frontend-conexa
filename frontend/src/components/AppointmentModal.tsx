@@ -10,6 +10,7 @@ import Calendar from "react-calendar";
 import Select, { OptionsOrGroups, GroupBase } from "react-select";
 import { usePatient } from "../context/patient";
 import { optionsMaker } from "../utils/optionsMaker";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 
 interface Option {
   label: string;
@@ -59,29 +60,34 @@ export function AppointmentModal() {
   }, []);
 
   return (
-    <div
-      className={`absolute left-0 right-0 top-0 bottom-0 mx-auto my-auto bg-gray-50 z-50 ${
-        isOpen ? "visible" : "invisible"
-      }`}
-    >
-      <Container className="relative w-full h-full flex flex-col items-center justify-center space-y-5">
-        <MdClose
-          className="absolute right-10 top-10 text-4xl cursor-pointer text-primary"
-          onClick={() => toggle()}
-        />
-        <div className="flex flex-col justify-center max-w-[300px] w-full space-y-5">
-          <Calendar onChange={setDate} value={date} />
-          <Select
-            options={patientOptions()}
-            placeholder="Paciente"
-            onChange={(selected: Option) => setPatient(selected.value)}
-            className="w-full"
-          />
-          <button className="filled w-full" onClick={() => handleNewAppointment()}>
-            Agendar
-          </button>
-        </div>
-      </Container>
-    </div>
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ y: -500, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -500, opacity: 0 }}
+          className={`absolute left-0 right-0 top-0 bottom-0 mx-auto my-auto bg-gray-50 z-50`}
+        >
+          <Container className="relative w-full h-full flex flex-col items-center justify-center space-y-5">
+            <MdClose
+              className="absolute right-10 top-10 text-4xl cursor-pointer text-primary"
+              onClick={() => toggle()}
+            />
+            <div className="flex flex-col justify-center max-w-[300px] w-full space-y-5">
+              <Calendar onChange={setDate} value={date} />
+              <Select
+                options={patientOptions()}
+                placeholder="Paciente"
+                onChange={(selected: Option) => setPatient(selected.value)}
+                className="w-full"
+              />
+              <button className="filled w-full" onClick={() => handleNewAppointment()}>
+                Agendar
+              </button>
+            </div>
+          </Container>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
