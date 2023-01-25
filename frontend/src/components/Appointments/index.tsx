@@ -2,6 +2,7 @@ import { AppointmentProps } from "../../types/appointment";
 import { AnimateNumber } from "../../utils/animateNumber";
 import { FadeEnterMotion } from "../FadeEnterMotion";
 import { AppointmentCard } from "./AppointmentCard";
+import { motion } from "framer-motion";
 
 export function Appointments({ appointments }: { appointments: AppointmentProps[] }) {
   return (
@@ -9,7 +10,9 @@ export function Appointments({ appointments }: { appointments: AppointmentProps[
       <p className="text-lg text-gray-800 text-left w-full">
         <div className="flex space-x-2">
           <AnimateNumber from={0} to={appointments?.length} />
-          <p>consultas agendadas</p>
+          <motion.div initial={{ x: -100, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+            <p>consultas agendadas</p>
+          </motion.div>
         </div>
       </p>
 
