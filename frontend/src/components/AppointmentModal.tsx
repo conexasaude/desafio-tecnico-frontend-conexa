@@ -8,6 +8,8 @@ import { notify } from "../utils/notify";
 import { PatientProps } from "../types/patient";
 import Calendar from "react-calendar";
 import Select, { OptionsOrGroups, GroupBase } from "react-select";
+import { usePatient } from "../context/patient";
+import { optionsMaker } from "../utils/optionsMaker";
 
 interface Option {
   label: string;
@@ -20,6 +22,7 @@ export function AppointmentModal() {
   const [patients, setPatients] = useState<PatientProps[]>([]);
   const [patient, setPatient] = useState<PatientProps>();
   const [date, setDate] = useState(new Date());
+  const { fetchPatients } = usePatient();
 
   async function handleNewAppointment() {
     try {
@@ -38,20 +41,21 @@ export function AppointmentModal() {
     }
   }
 
-  async function fetchPatients() {
-    const { data } = await api.get("/patients");
-    setPatients(data);
+  async function handleFetchPatients() {
+    try {
+      const patients = await fetchPatients();
+      setPatients(patients);
+    } catch (error) {
+      return;
+    }
   }
 
-  function patientOptions(): OptionsOrGroups<Option, GroupBase<Option>> {
-    return patients.map((patient) => ({
-      value: patient,
-      label: `${patient.first_name} ${patient.last_name}`,
-    }));
+  function patientOptions() {
+    return optionsMaker(patients, ["first_name", "last_name"]);
   }
 
   useEffect(() => {
-    fetchPatients();
+    handleFetchPatients();
   }, []);
 
   return (
@@ -70,7 +74,7 @@ export function AppointmentModal() {
           <Select
             options={patientOptions()}
             placeholder="Paciente"
-            onChange={(selected) => setPatient(selected.value)}
+            onChange={(selected: Option) => setPatient(selected.value)}
             className="w-full"
           />
           <button className="filled w-full" onClick={() => handleNewAppointment()}>
