@@ -64,7 +64,7 @@ export function AppointmentModal() {
         isOpen ? "visible" : "invisible"
       }`}
     >
-      <Container className="w-full h-full flex flex-col items-center justify-center space-y-5">
+      <Container className="relative w-full h-full flex flex-col items-center justify-center space-y-5">
         <MdClose
           className="absolute right-10 top-10 text-4xl cursor-pointer text-primary"
           onClick={() => toggle()}
