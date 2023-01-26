@@ -18,7 +18,7 @@ O objetivo do desafio era construir uma interface coerente com o [figma](https:/
 - Storybook
 
 ### Como Executar
-1. Clone o repositório, navegue até a pasta do mesmo, depois para a pasta "frontend" e crie um arquivo .env com a variável 
+1. Clone o repositório, navegue até a pasta do mesmo, depois para a pasta "frontend" e crie um arquivo .env com a variável:
  ```javascript 
  VITE_API_URL=http://localhost:3333
  ```
@@ -26,8 +26,8 @@ O objetivo do desafio era construir uma interface coerente com o [figma](https:/
 ```bash 
 yarn && yarn dev
 ```
-3. Abra um novo terminal e execute para executar o storybook:
+3. Abra um novo terminal, navegue até a pasta frontend novamente e execute o comando a seguir para abrir o storybook:
 ```bash 
 yarn storybook
 ```
-4. Abra um novo terminal, navegue até a pasta "backend" e execute `yarn && yarn dev`
+4. Abra um novo terminal, navegue até a pasta "backend" e execute o seguinte comando para executar o servidor: `yarn && yarn dev`
