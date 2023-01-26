@@ -6,16 +6,17 @@ import Container from "../components/Container";
 import { Footer } from "../components/Footer";
 import Header from "../components/Header";
 import { useAppointment } from "../context/appointment";
-import { useRedirectLogin } from "../hooks/RedirectLogin";
 import { AppointmentProps } from "../types/appointment";
 import { notify } from "../utils/notify";
 import { motion } from "framer-motion";
 
-export function Dashboard() {
+interface Dashboard {
+  mockAppointments?: AppointmentProps[];
+}
+
+export function Dashboard({ mockAppointments }: Dashboard) {
   const { fetchAppointments } = useAppointment();
   const [appointments, setAppointments] = useState<AppointmentProps[]>();
-
-  useRedirectLogin();
 
   async function handleFetchAppointments() {
     try {
@@ -34,13 +35,13 @@ export function Dashboard() {
   return (
     <>
       <div className="relative">
-        <Header styles="fixed" />
-        <Container className="flex flex-col h-[calc(100vh-180px)] mt-[80px]">
+        <Header styles="fixed z-10" />
+        <Container className="flex flex-col h-full z-index mt-[4rem]">
           <motion.div initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
             <p className="text-6xl text-primaryDark font-bold mt-10">Consultas</p>
           </motion.div>
           <div className="flex items-center justify-center h-full">
-            <Appointments appointments={appointments} />
+            <Appointments appointments={mockAppointments ? mockAppointments : appointments} />
           </div>
         </Container>
         <Footer />

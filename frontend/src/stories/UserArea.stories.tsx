@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { UserArea, UserAreaProps } from "../components/Header/UserArea";
 
 export default {
-  title: "components/header/user area",
+  title: "Components/Header/User Area",
   component: UserArea,
   argTypes: {
     control: { type: "input" },

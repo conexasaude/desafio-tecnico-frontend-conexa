@@ -3,7 +3,7 @@ import { Meta } from "@storybook/react";
 import { LoginForm } from "../components/LoginForm";
 
 export default {
-  title: "components/login form",
+  title: "Components/Login Form",
   component: LoginForm,
   decorators: [
     (Story) => {

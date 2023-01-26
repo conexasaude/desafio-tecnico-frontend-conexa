@@ -1,4 +1,6 @@
 import "../src/styles/global.css";
+import "react-toastify/dist/ReactToastify.css";
+import "react-calendar/dist/Calendar.css";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -7,5 +9,8 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  backgrounds: {
+    default: "#FFFFFB",
   },
 };

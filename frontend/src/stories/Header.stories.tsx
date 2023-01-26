@@ -3,7 +3,7 @@ import Header, { HeaderProps } from "../components/Header";
 import { useAuth } from "../context/auth";
 
 export default {
-  title: "layout/header",
+  title: "Components/Header",
   component: Header,
   decorators: [
     (Story) => {
