@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import { api } from "../config/axios";
-import { loginProps } from "../types/auth";
+import { LoginProps } from "../types/auth";
 
 interface UserProps {
   name: string;
   setName: (name: string) => void;
-  login: (data: loginProps) => Promise<string>;
+  login: (data: LoginProps) => Promise<string>;
   logout: () => void;
 }
 
