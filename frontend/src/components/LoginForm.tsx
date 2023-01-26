@@ -4,7 +4,7 @@ import { DefaultInput } from "./DefaultInput";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useRef, useState } from "react";
-import { loginProps } from "../types/auth";
+import { LoginProps } from "../types/auth";
 import { useAuth } from "../context/auth";
 import { notify } from "../utils/notify";
 import { ToastContainer } from "react-toastify";
@@ -15,7 +15,7 @@ export function LoginForm() {
   const passwordInputUseRef = useRef<HTMLInputElement | null>(null);
   const { login } = useAuth();
 
-  async function handleLogin(formData: loginProps) {
+  async function handleLogin(formData: LoginProps) {
     try {
       await login(formData);
     } catch (error) {
