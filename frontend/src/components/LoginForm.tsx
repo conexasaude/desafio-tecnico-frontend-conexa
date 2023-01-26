@@ -8,16 +8,12 @@ import { loginProps } from "../types/auth";
 import { useAuth } from "../context/auth";
 import { notify } from "../utils/notify";
 import { ToastContainer } from "react-toastify";
-import { useRedirectLogin } from "../hooks/RedirectLogin";
-import { motion } from "framer-motion";
 
 export function LoginForm() {
   const { register, handleSubmit, errors } = useFormResolver(loginSchema);
   const [showPassword, setShowPassword] = useState(false);
   const passwordInputUseRef = useRef<HTMLInputElement | null>(null);
   const { login } = useAuth();
-
-  useRedirectLogin();
 
   async function handleLogin(formData: loginProps) {
     try {
@@ -62,6 +58,7 @@ export function LoginForm() {
           />
 
           <div
+            id="password-eye"
             className="absolute right-0 bottom-3 text-2xl text-gray-500 cursor-pointer"
             onClick={() => toggleShowPassword()}
           >
