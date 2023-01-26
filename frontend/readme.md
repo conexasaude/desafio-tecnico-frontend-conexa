@@ -39,3 +39,8 @@ yarn storybook
 ```bash 
 yarn && yarn dev
 ```
+
+### Credenciais de acesso
+```json
+email: gandalf@mail.com senha: 123456
+
