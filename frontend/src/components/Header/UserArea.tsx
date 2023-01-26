@@ -1,7 +1,7 @@
 import { useAuth } from "../../context/auth";
 
-export function UserArea() {
-  const { logout, name } = useAuth();
+export function UserArea({ name }: { name: string }) {
+  const { logout } = useAuth();
 
   return (
     <div className="flex gap-2 items-center w-full text-end justify-end space-x-5">

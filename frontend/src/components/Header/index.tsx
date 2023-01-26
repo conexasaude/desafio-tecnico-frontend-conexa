@@ -17,7 +17,7 @@ function Header({ styles }: HeaderProps) {
           <img src="/logo.png" alt="logo" className="h-10" />
         </motion.span>
 
-        {name && <UserArea />}
+        <UserArea name={name} />
       </Container>
     </header>
   );
