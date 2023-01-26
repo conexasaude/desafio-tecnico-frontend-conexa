@@ -26,6 +26,11 @@ export function AppointmentModal() {
 
   async function handleNewAppointment() {
     try {
+      if (!patient || !date) {
+        notify("Campos faltantes", "warning");
+        return;
+      }
+
       const res = await createAppointment({
         patientId: patient.id,
         date,
@@ -37,6 +42,7 @@ export function AppointmentModal() {
 
       return notify("Erro ao agendar", "warning");
     } catch (error) {
+      console.log(error.message);
       return notify("Erro ao agendar", "warning");
     }
   }
@@ -72,14 +78,17 @@ export function AppointmentModal() {
               className="absolute right-10 top-10 text-4xl cursor-pointer text-primary"
               onClick={() => toggle()}
             />
+
             <div className="flex flex-col justify-center max-w-[300px] w-full space-y-5">
               <Calendar onChange={setDate} value={date} />
+
               <Select
                 options={patientOptions()}
                 placeholder="Paciente"
                 onChange={(selected: Option) => setPatient(selected.value)}
                 className="w-full"
               />
+
               <button className="filled w-full" onClick={() => handleNewAppointment()}>
                 Agendar
               </button>
