@@ -1,4 +1,12 @@
 # Desafio Ténico Conexa: Front-end
+
+### Screenshots
+![enter image description here](https://i.imgur.com/V7TwdD3.png)
+
+![enter image description here](https://i.imgur.com/Jhwf6SO.png)
+
+![enter image description here](https://i.imgur.com/8yDrZhf.png)
+
 ## Resumo
 O objetivo do desafio era construir uma interface coerente com o [figma](https://www.figma.com/file/eaD2LIOcswFJO2SblVyIeq/Desafio-frontend-Conexa?node-id=1:446) apresentado, que se trata de uma aplicação teórica de como seria o fluxo de um médico ao efetuar login, listar consultas e criar uma nova, utilizando principalmente Reactjs para a criação e gerenciamento de componentes JSX, consumindo uma API falsa e sendo livre para a aplicação de demais tecnologias que não fujam do escopo do mesmo. As seguintes tecnologias foram aplicadas:
 
