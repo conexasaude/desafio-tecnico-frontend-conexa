@@ -4,7 +4,7 @@
 
 @layer components {
   html {
-    font-family: "Nunito";
+    @apply font-nunito;
   }
 
   body {

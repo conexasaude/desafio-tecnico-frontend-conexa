@@ -3,7 +3,7 @@ import Container from "../Container";
 import { UserArea } from "./UserArea";
 import { motion } from "framer-motion";
 
-interface HeaderProps {
+export interface HeaderProps {
   styles?: string;
 }
 

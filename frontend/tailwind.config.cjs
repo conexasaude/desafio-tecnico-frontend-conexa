@@ -13,6 +13,9 @@ module.exports = {
         quaternary: "#DAD2D0",
       },
     },
+    fontFamily: {
+      nunito: ["Nunito", "sans-serif"],
+    },
   },
   plugins: [],
 };

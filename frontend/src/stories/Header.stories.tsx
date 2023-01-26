@@ -1,25 +1,17 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
-import { Header } from './Header';
+import { Meta } from "@storybook/react";
+import Header, { HeaderProps } from "../components/Header";
+import { useAuth } from "../context/auth";
 
 export default {
-  title: 'Example/Header',
+  title: "layout/header",
   component: Header,
-  parameters: {
-    // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'fullscreen',
-  },
-} as ComponentMeta<typeof Header>;
+  decorators: [
+    (Story) => {
+      useAuth.setState({ name: "João da Silva" });
 
-const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
+      return <Story />;
+    },
+  ],
+} as Meta<HeaderProps>;
 
-export const LoggedIn = Template.bind({});
-LoggedIn.args = {
-  user: {
-    name: 'Jane Doe',
-  },
-};
-
-export const LoggedOut = Template.bind({});
-LoggedOut.args = {};
+export const Default = {};
