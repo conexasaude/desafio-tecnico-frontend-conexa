@@ -5,9 +5,13 @@ import { motion } from "framer-motion";
 
 export function Login() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col items-center">
       <Header />
-      <motion.div initial={{ y: 300, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
+      <motion.span
+        initial={{ y: 300, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className="w-full flex justify-center"
+      >
         <Container className="flex flex-col h-[calc(100vh-5rem)] w-full max-w-5xl justify-center items-center xl:items-start space-y-10">
           <h1 className="font-bold text-5xl lg:7xl text-primaryDark">Faça Login</h1>
 
@@ -21,7 +25,7 @@ export function Login() {
             </div>
           </div>
         </Container>
-      </motion.div>
+      </motion.span>
     </div>
   );
 }
