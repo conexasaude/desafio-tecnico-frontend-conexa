@@ -4,7 +4,11 @@ import { FadeEnterMotion } from "../FadeEnterMotion";
 import { AppointmentCard } from "./AppointmentCard";
 import { motion } from "framer-motion";
 
-export function Appointments({ appointments }: { appointments: AppointmentProps[] }) {
+interface AppointmentsProps {
+  appointments: AppointmentProps[];
+}
+
+export function Appointments({ appointments }: AppointmentsProps) {
   return (
     <div className="flex flex-col space-y-5 w-full max-w-[600px] px-5 items-center h-full">
       <p className="text-lg text-gray-800 text-left w-full">
