@@ -9,7 +9,7 @@ export function AnimateNumber({ from, to }) {
       duration: 2,
       onUpdate(value) {
         if (ref?.current) {
-          ref.current.textContent = value.toFixed(0);
+          ref.current.textContent = value?.toFixed(0);
         }
       },
     });

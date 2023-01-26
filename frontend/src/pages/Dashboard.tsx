@@ -9,6 +9,7 @@ import { useAppointment } from "../context/appointment";
 import { AppointmentProps } from "../types/appointment";
 import { notify } from "../utils/notify";
 import { motion } from "framer-motion";
+import { useAuth } from "../context/auth";
 
 interface Dashboard {
   mockAppointments?: AppointmentProps[];
@@ -17,6 +18,8 @@ interface Dashboard {
 export function Dashboard({ mockAppointments }: Dashboard) {
   const { fetchAppointments } = useAppointment();
   const [appointments, setAppointments] = useState<AppointmentProps[]>();
+
+  const { name } = useAuth();
 
   async function handleFetchAppointments() {
     try {
@@ -30,7 +33,7 @@ export function Dashboard({ mockAppointments }: Dashboard) {
 
   useEffect(() => {
     handleFetchAppointments();
-  }, []);
+  }, [name]);
 
   return (
     <>
