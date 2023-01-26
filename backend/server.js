@@ -17,3 +17,5 @@ server.use(router)
 server.listen(process.env.PORT || 3333, () => {
   console.log('JSON Server is running<>>', 'http://localhost:3333')
 })
+
+module.exports = server
