@@ -30,4 +30,7 @@ yarn && yarn dev
 ```bash 
 yarn storybook
 ```
-4. Abra um novo terminal, navegue até a pasta "backend" e execute o seguinte comando para executar o servidor: `yarn && yarn dev`
+4. Abra um novo terminal, navegue até a pasta "backend" e execute o seguinte comando para executar o servidor:
+```bash 
+yarn && yarn dev
+```
