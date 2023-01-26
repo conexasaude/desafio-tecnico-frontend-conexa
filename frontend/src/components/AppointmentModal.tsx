@@ -66,7 +66,7 @@ export function AppointmentModal() {
           initial={{ y: -500, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -500, opacity: 0 }}
-          className={`absolute left-0 right-0 top-0 bottom-0 mx-auto my-auto bg-gray-50 z-50`}
+          className={`absolute left-0 right-0 top-0 bottom-0 mx-auto my-auto bg-secondary z-50`}
         >
           <Container className="relative w-full h-full flex flex-col items-center justify-center space-y-5">
             <MdClose
