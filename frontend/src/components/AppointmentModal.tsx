@@ -1,16 +1,15 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { api } from "../config/axios";
-import Container from "./Container";
-import { MdClose } from "react-icons/md";
-import { useModal } from "../context/modal";
-import { useAppointment } from "../context/appointment";
-import { notify } from "../utils/notify";
-import { PatientProps } from "../types/patient";
 import Calendar from "react-calendar";
-import Select, { OptionsOrGroups, GroupBase } from "react-select";
+import { MdClose } from "react-icons/md";
+import Select from "react-select";
+import { useAppointment } from "../context/appointment";
+import { useModal } from "../context/modal";
 import { usePatient } from "../context/patient";
+import { PatientProps } from "../types/patient";
+import { notify } from "../utils/notify";
 import { optionsMaker } from "../utils/optionsMaker";
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import Container from "./Container";
 
 interface Option {
   label: string;

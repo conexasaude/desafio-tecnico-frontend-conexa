@@ -1,4 +1,3 @@
-import { useEffect } from "@storybook/addons";
 import { Meta } from "@storybook/react";
 import { LoginForm } from "../components/LoginForm";
 

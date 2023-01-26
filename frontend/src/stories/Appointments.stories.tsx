@@ -1,14 +1,12 @@
 import { Meta } from "@storybook/react";
 import { Appointments } from "../components/Appointments";
-import { useAuth } from "../context/auth";
-import { Dashboard } from "../pages/Dashboard";
 
 export default {
   title: "Components/appointments",
   component: Appointments,
 } as Meta;
 
-export const Default = ({ token }) => {
+export const Default = () => {
   const mockAppointments = [
     {
       id: 1,
