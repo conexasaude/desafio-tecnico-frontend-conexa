@@ -1,6 +1,10 @@
 import { useAuth } from "../../context/auth";
 
-export function UserArea({ name }: { name: string }) {
+export interface UserAreaProps {
+  name: string;
+}
+
+export function UserArea({ name }: UserAreaProps) {
   const { logout } = useAuth();
 
   return (
