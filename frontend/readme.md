@@ -26,7 +26,7 @@ O objetivo do desafio era construir uma interface coerente com o [figma](https:/
 ```bash 
 yarn && yarn dev
 ```
-3. Abra um novo terminal, navegue até a pasta frontend novamente e execute o comando a seguir para abrir o storybook:
+3. Abra um novo terminal, navegue até a pasta "frontend" novamente e execute o comando a seguir para abrir o storybook:
 ```bash 
 yarn storybook
 ```
