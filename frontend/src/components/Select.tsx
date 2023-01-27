@@ -1,9 +1,14 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
 
+interface OptionsProps {
+  label: string;
+  value: unknown;
+}
+
 interface SelectProps {
-  registerName: string;
-  formRegister: UseFormRegister<FieldValues>;
-  options: any[];
+  registerName?: string;
+  formRegister?: UseFormRegister<FieldValues>;
+  options: OptionsProps[];
 }
 
 export function Select({ options, formRegister, registerName, ...rest }: SelectProps) {

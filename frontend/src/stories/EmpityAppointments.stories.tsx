@@ -4,7 +4,7 @@ import { AppointmentCard } from "../components/Appointments/AppointmentCard";
 import { EmpityAppointments } from "../components/EmpityAppointments";
 
 export default {
-  title: "Components/empityAppointment",
+  title: "Components/Empity Appointment",
   component: Appointments,
 } as Meta;
 

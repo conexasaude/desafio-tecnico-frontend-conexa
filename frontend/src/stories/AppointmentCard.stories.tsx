@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { AppointmentCard } from "../components/Appointments/AppointmentCard";
 
 export default {
-  title: "Components/appointmentCard",
+  title: "Components/Appointment Card",
   component: AppointmentCard,
 } as Meta;
 
