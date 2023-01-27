@@ -1,6 +1,6 @@
-import { forwardRef } from "react";
+import { forwardRef, HTMLAttributes } from "react";
 
-interface TooltipProps {
+interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
   children: JSX.Element | string;
   className?: string;
 }
