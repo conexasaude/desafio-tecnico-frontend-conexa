@@ -1,10 +1,9 @@
 import { Meta } from "@storybook/react";
-import { Appointments } from "../components/Appointments";
 import { AppointmentCard } from "../components/Appointments/AppointmentCard";
 
 export default {
   title: "Components/appointmentCard",
-  component: Appointments,
+  component: AppointmentCard,
 } as Meta;
 
 export const Default = () => {
