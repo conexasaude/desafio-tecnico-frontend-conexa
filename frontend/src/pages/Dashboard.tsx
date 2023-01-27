@@ -10,6 +10,7 @@ import { AppointmentProps } from "../types/appointment";
 import { notify } from "../utils/notify";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/auth";
+import { EmpityAppointments } from "../components/EmpityAppointments";
 
 interface Dashboard {
   mocked?: boolean;
@@ -43,8 +44,9 @@ export function Dashboard({ mocked = false }: Dashboard) {
           <motion.div initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
             <p className="text-6xl text-primaryDark font-bold mt-10">Consultas</p>
           </motion.div>
-          <div className="flex items-center justify-center h-full">
+          <div className="flex flex-col items-center justify-center h-full">
             <Appointments appointments={appointments} />
+            {!appointments?.length && <EmpityAppointments />}
           </div>
         </Container>
         <Footer />
