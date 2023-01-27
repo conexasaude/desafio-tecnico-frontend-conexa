@@ -21,11 +21,13 @@ export function Appointments({ appointments }: AppointmentsProps) {
       </p>
 
       <div className="w-full max-w-[600px] space-y-10 overflow-y-auto pb-40">
-        {appointments?.map((appointment, index) => (
-          <FadeEnterMotion delay={index / 10 / 2}>
-            <AppointmentCard appointment={appointment} />
-          </FadeEnterMotion>
-        ))}
+        {appointments?.map((appointment, index) => {
+          return (
+            <FadeEnterMotion delay={index / 10 / 2} key={appointment.id}>
+              <AppointmentCard appointment={appointment} />
+            </FadeEnterMotion>
+          );
+        })}
       </div>
     </div>
   );
