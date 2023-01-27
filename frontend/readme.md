@@ -52,3 +52,5 @@ yarn && yarn dev
 ```json
 email: gandalf@mail.com senha: 123456
 
+### Extras
+Utilize o node 16.x para executar o storybook
