@@ -31,7 +31,7 @@ export const useAppointment = create<AppointmentStoreProps>((set, get) => ({
       const res = await api.post("/consultations", { ...data });
 
       if (res.data) {
-        get().fetchAppointments();
+        set((state) => ({ ...state, appointments: res.data }));
         return res.data;
       }
 
