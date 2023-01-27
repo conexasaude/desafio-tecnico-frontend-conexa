@@ -36,7 +36,7 @@ export function Dashboard({ mockAppointments }: Dashboard) {
   }, [name]);
 
   return (
-    <>
+    <div className="overflow-y-">
       <div className="relative">
         <Header styles="fixed z-10" />
         <Container className="flex flex-col h-full z-index mt-[4rem]">
@@ -51,6 +51,6 @@ export function Dashboard({ mockAppointments }: Dashboard) {
         <ToastContainer />
       </div>
       <AppointmentModal />
-    </>
+    </div>
   );
 }
