@@ -10,13 +10,9 @@ export default {
 } as Meta<UserAreaProps>;
 
 export const Default = ({ name }: { name: string }) => {
-  return (
-    <div className="text-white">
-      <UserArea name={name} />
-    </div>
-  );
+  return <UserArea name={name} />;
 };
 
 Default.args = {
-  name: "",
+  name: "João da Silva",
 };
