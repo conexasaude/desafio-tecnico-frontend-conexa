@@ -40,16 +40,20 @@ export function Dashboard({ mocked = false }: Dashboard) {
     <div className="overflow-y-">
       <div className="relative">
         <Header styles="fixed z-10" />
+
         <Container className="flex flex-col h-full z-index mt-[4rem]">
           <motion.div initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
-            <p className="text-6xl text-primaryDark font-bold mt-10">Consultas</p>
+            <p className="text-6xl text-primaryDark font-bold my-10">Consultas</p>
           </motion.div>
+
           <div className="flex flex-col items-center justify-center h-full">
             <Appointments appointments={appointments} />
             {!appointments?.length && <EmpityAppointments />}
           </div>
         </Container>
+
         <Footer />
+
         <ToastContainer />
       </div>
       <AppointmentModal />
