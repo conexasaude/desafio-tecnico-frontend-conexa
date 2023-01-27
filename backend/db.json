@@ -1,74 +1,39 @@
 {
   "consultations": [
     {
-      "id": 1,
       "patientId": 1,
-      "date": "Fri Feb 05 2021 10:20:00 GMT-0300 (Brasilia Standard Time)"
-    },
-    {
-      "id": 2,
-      "patientId": 3,
-      "date": "Thu Feb 11 2021 09:00:00 GMT-0300 (Brasilia Standard Time)"
-    },
-    {
-      "id": 3,
-      "patientId": 2,
-      "date": "Thu Feb 11 2021 10:00:00 GMT-0300 (Brasilia Standard Time)"
-    },
-    {
-      "id": 4,
-      "patientId": 3,
-      "date": "Thu Feb 11 2021 13:00:00 GMT-0300 (Brasilia Standard Time)"
+      "date": "2023-01-27T15:12:00.000Z",
+      "id": 1
     },
     {
       "patientId": 1,
-      "date": "Fri Feb 05 2021 10:20:00 GMT-0300 (Brasilia Standard Time)",
+      "date": "2023-01-27T15:12:00.000Z",
+      "id": 2
+    },
+    {
+      "patientId": 1,
+      "date": "2023-01-27T15:12:00.000Z",
+      "id": 3
+    },
+    {
+      "patientId": 1,
+      "date": "2023-01-27T15:12:00.000Z",
+      "id": 4
+    },
+    {
+      "patientId": 1,
+      "date": "2023-01-27T15:12:00.000Z",
       "id": 5
     },
     {
       "patientId": 1,
-      "date": "Fri Feb 05 2021 10:20:00 GMT-0300 (Brasilia Standard Time)",
+      "date": "2023-01-27T15:12:00.000Z",
       "id": 6
     },
     {
-      "patientId": 1,
-      "date": "Fri Feb 05 2021 10:20:00 GMT-0300 (Brasilia Standard Time)",
+      "patientId": 2,
+      "date": "2023-01-28T05:23:00.000Z",
       "id": 7
-    },
-    {
-      "patientId": 1,
-      "date": "Fri Feb 05 2021 10:20:00 GMT-0300 (Brasilia Standard Time)",
-      "id": 8
-    },
-    {
-      "patientId": 1,
-      "date": "Fri Feb 05 2021 10:20:00 GMT-0300 (Brasilia Standard Time)",
-      "id": 9
-    },
-    {
-      "patientId": 1,
-      "date": "Fri Feb 05 2021 10:20:00 GMT-0300 (Brasilia Standard Time)",
-      "id": 10
-    },
-    {
-      "patientId": 1,
-      "date": "2023-01-27T03:00:00.000Z",
-      "id": 11
-    },
-    {
-      "patientId": 3,
-      "date": "2023-01-25T05:04:12.460Z",
-      "id": 12
-    },
-    {
-      "patientId": 1,
-      "date": "2023-01-25T05:04:12.460Z",
-      "id": 13
-    },
-    {
-      "patientId": 1,
-      "date": "2023-01-26T15:38:24.277Z",
-      "id": 14
     }
   ],
   "patients": [

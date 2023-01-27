@@ -12,7 +12,7 @@ interface AppointmentStoreProps {
   createAppointment: (data: NewAppointmentProps) => Promise<NewAppointmentResponseProps>;
 }
 
-export const useAppointment = create<AppointmentStoreProps>((set, get) => ({
+export const useAppointment = create<AppointmentStoreProps>((set) => ({
   appointments: [],
   fetchAppointments: async () => {
     try {

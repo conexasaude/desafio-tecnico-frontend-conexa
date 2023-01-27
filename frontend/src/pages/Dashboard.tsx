@@ -12,10 +12,10 @@ import { motion } from "framer-motion";
 import { useAuth } from "../context/auth";
 
 interface Dashboard {
-  mockAppointments?: AppointmentProps[];
+  mocked?: boolean;
 }
 
-export function Dashboard({ mockAppointments }: Dashboard) {
+export function Dashboard({ mocked = false }: Dashboard) {
   const { fetchAppointments } = useAppointment();
   const [appointments, setAppointments] = useState<AppointmentProps[]>();
 
@@ -32,7 +32,7 @@ export function Dashboard({ mockAppointments }: Dashboard) {
   }
 
   useEffect(() => {
-    handleFetchAppointments();
+    !mocked && handleFetchAppointments();
   }, [name]);
 
   return (
@@ -44,7 +44,7 @@ export function Dashboard({ mockAppointments }: Dashboard) {
             <p className="text-6xl text-primaryDark font-bold mt-10">Consultas</p>
           </motion.div>
           <div className="flex items-center justify-center h-full">
-            <Appointments appointments={mockAppointments ? mockAppointments : appointments} />
+            <Appointments appointments={appointments} />
           </div>
         </Container>
         <Footer />

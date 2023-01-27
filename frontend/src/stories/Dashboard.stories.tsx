@@ -1,4 +1,5 @@
 import { Meta } from "@storybook/react";
+import { useAppointment } from "../context/appointment";
 import { useAuth } from "../context/auth";
 import { Dashboard } from "../pages/Dashboard";
 
@@ -39,10 +40,11 @@ export const Default = ({ token }) => {
       },
     },
   ];
+  useAppointment.setState({ appointments: mockAppointments });
 
   return (
     <div className="bg-secondary">
-      <Dashboard mockAppointments={mockAppointments} />;
+      <Dashboard mocked />;
     </div>
   );
 };
