@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
+    "@types/validator": "^13.7.11",
     "autoprefixer": "^10.4.13",
     "axios": "^1.2.3",
     "framer-motion": "^8.5.2",
@@ -24,6 +25,7 @@
     "react-router-dom": "^6.7.0",
     "react-select": "^5.7.0",
     "react-toastify": "^9.1.1",
+    "validator": "^13.7.0",
     "yup": "^0.32.11",
     "zustand": "^4.3.2"
   },
