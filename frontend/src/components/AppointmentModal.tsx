@@ -1,15 +1,19 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
+import { Controller } from "react-hook-form";
 import { MdClose } from "react-icons/md";
-import Select from "react-select";
 import { useAppointment } from "../context/appointment";
 import { useModal } from "../context/modal";
 import { usePatient } from "../context/patient";
+import { useFormResolver } from "../hooks/useFormResolver";
+import { newAppointmentSchema } from "../schemas/newAppointmentSchema";
 import { PatientProps } from "../types/patient";
+import { addHourToDate } from "../utils/addHourToDate";
 import { notify } from "../utils/notify";
 import { optionsMaker } from "../utils/optionsMaker";
 import Container from "./Container";
+import { Select } from "./Select";
 
 interface Option {
   label: string;
@@ -20,27 +24,18 @@ export function AppointmentModal() {
   const { toggle, isOpen } = useModal();
   const { createAppointment } = useAppointment();
   const [patients, setPatients] = useState<PatientProps[]>([]);
-  const [patient, setPatient] = useState<PatientProps>();
   const [date, setDate] = useState(new Date());
   const { fetchPatients } = usePatient();
 
-  async function handleNewAppointment() {
+  const { register, handleSubmit, errors, control } = useFormResolver(newAppointmentSchema);
+
+  async function handleNewAppointment(data) {
     try {
-      if (!patient || !date) {
-        notify("Campos faltantes", "warning");
-        return;
-      }
-
-      const res = await createAppointment({
-        patientId: patient.id,
-        date,
+      await createAppointment({
+        patientId: data.patient.id,
+        date: addHourToDate(data.date, data.hour),
       });
-
-      if (res.id && patient && date) {
-        return notify("Agendamento Criado!", "success");
-      }
-
-      return notify("Erro ao agendar", "warning");
+      return notify("Agendamento Criado!", "success");
     } catch (error) {
       console.log(error.message);
       return notify("Erro ao agendar", "warning");
@@ -79,20 +74,36 @@ export function AppointmentModal() {
               onClick={() => toggle()}
             />
 
-            <div className="flex flex-col justify-center max-w-[300px] w-full space-y-5">
-              <Calendar onChange={setDate} value={date} />
-
-              <Select
-                options={patientOptions()}
-                placeholder="Paciente"
-                onChange={(selected: Option) => setPatient(selected.value)}
-                className="w-full"
+            <form
+              onSubmit={handleSubmit(handleNewAppointment)}
+              className="flex flex-col justify-center items-center max-w-[300px] w-full space-y-5"
+            >
+              <Controller
+                name="date"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <Calendar onChange={onChange} value={value} />
+                )}
               />
+              <p>{errors?.date && errors.date.message.toString()}</p>
 
-              <button className="filled w-full" onClick={() => handleNewAppointment()}>
+              <input
+                type="time"
+                className="flex items-center rounded-md justify-center border-[1px] border-gray-300 p-3 w-full"
+                min="8:00"
+                max="18:00"
+                {...register("hour")}
+              />
+              <p>{errors?.hour && errors.hour.message.toString()}</p>
+
+              <Select options={patientOptions()} formRegister={register} registerName="patient" />
+
+              <p>{errors?.patient && errors.patient.message.toString()}</p>
+
+              <button className="filled w-full" type="submit">
                 Agendar
               </button>
-            </div>
+            </form>
           </Container>
         </motion.div>
       )}
