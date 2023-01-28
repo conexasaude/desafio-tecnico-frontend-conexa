@@ -6,8 +6,8 @@ export default {
   component: Select,
 } as Meta<SelectProps>;
 
-export const Default = ({ options }: { options: OptionsProps[] }) => {
-  return <Select options={options} onChange={() => {}} />;
+export const Default = (args) => {
+  return <Select {...args} />;
 };
 
 Default.args = {
