@@ -7,7 +7,7 @@ export default {
 } as Meta<SelectProps>;
 
 export const Default = ({ options }: { options: OptionsProps[] }) => {
-  return <Select options={options} registerName="test" />;
+  return <Select options={options} onChange={() => {}} />;
 };
 
 Default.args = {

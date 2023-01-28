@@ -18,8 +18,6 @@ export const useAppointment = create<AppointmentStoreProps>((set, get) => ({
     const res = await api.get("/consultations?_expand=patient");
 
     set(() => ({ appointments: res.data }));
-
-    return;
   },
   createAppointment: async (data: NewAppointmentProps) => {
     await api.post("/consultations", { ...data });
