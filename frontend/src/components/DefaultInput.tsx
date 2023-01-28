@@ -3,9 +3,9 @@ import { FieldErrorsImpl, FieldValues, UseFormProps, UseFormRegister } from "rea
 import { Tooltip } from "./ToolTip";
 
 interface DefaultFieldProps extends UseFormProps, React.HTMLAttributes<HTMLInputElement> {
-  registerName: string;
-  formRegister: UseFormRegister<FieldValues>;
-  errors: Partial<FieldErrorsImpl<{ [x: string]: any }>>;
+  registerName?: string;
+  formRegister?: UseFormRegister<FieldValues>;
+  errors?: Partial<FieldErrorsImpl<{ [x: string]: any }>>;
   reactRef?: MutableRefObject<HTMLInputElement>;
   title?: string;
   icon?: JSX.Element;
@@ -24,7 +24,6 @@ export function DefaultInput({
   reactRef,
 }: DefaultFieldProps) {
   const toolTipRef = createRef<HTMLDivElement>();
-  const { ref } = formRegister(registerName);
 
   return (
     <div>
@@ -46,14 +45,17 @@ export function DefaultInput({
       <input
         type={type}
         className="border-b-2 w-full"
-        {...formRegister(registerName)}
+        {...(formRegister && formRegister(registerName))}
         ref={(e) => {
-          ref(e);
-          if (reactRef) reactRef.current = e;
+          if (formRegister) {
+            const { ref } = formRegister(registerName);
+            ref(e);
+            if (reactRef) reactRef.current = e;
+          }
         }}
       />
 
-      {errors[registerName]?.message && (
+      {registerName && errors[registerName]?.message && (
         <span className="text-red-400">{errors[registerName]?.message.toString()}</span>
       )}
     </div>
