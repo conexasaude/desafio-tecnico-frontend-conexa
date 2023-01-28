@@ -23,9 +23,8 @@ interface Option {
 export function AppointmentModal() {
   const { toggle, isOpen } = useModal();
   const { createAppointment } = useAppointment();
-  const [patients, setPatients] = useState<PatientProps[]>([]);
-  const [date, setDate] = useState(new Date());
   const { fetchPatients } = usePatient();
+  const { patients } = usePatient();
 
   const { register, handleSubmit, errors, control } = useFormResolver(newAppointmentSchema);
 
@@ -37,17 +36,15 @@ export function AppointmentModal() {
       });
       return notify("Agendamento Criado!", "success");
     } catch (error) {
-      console.log(error.message);
       return notify("Erro ao agendar", "warning");
     }
   }
 
   async function handleFetchPatients() {
     try {
-      const patients = await fetchPatients();
-      setPatients(patients);
+      await fetchPatients();
     } catch (error) {
-      return;
+      return notify("Erro ao buscar agendamentos", "warning");
     }
   }
 
