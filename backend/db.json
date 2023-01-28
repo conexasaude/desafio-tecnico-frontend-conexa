@@ -1,39 +1,24 @@
 {
   "consultations": [
     {
+      "id": 1,
       "patientId": 1,
-      "date": "2023-01-27T15:12:00.000Z",
-      "id": 1
+      "date": "Fri Feb 05 2021 10:20:00 GMT-0300 (Brasilia Standard Time)"
     },
     {
-      "patientId": 1,
-      "date": "2023-01-27T15:12:00.000Z",
-      "id": 2
+      "id": 2,
+      "patientId": 3,
+      "date": "Thu Feb 11 2021 09:00:00 GMT-0300 (Brasilia Standard Time)"
     },
     {
-      "patientId": 1,
-      "date": "2023-01-27T15:12:00.000Z",
-      "id": 3
-    },
-    {
-      "patientId": 1,
-      "date": "2023-01-27T15:12:00.000Z",
-      "id": 4
-    },
-    {
-      "patientId": 1,
-      "date": "2023-01-27T15:12:00.000Z",
-      "id": 5
-    },
-    {
-      "patientId": 1,
-      "date": "2023-01-27T15:12:00.000Z",
-      "id": 6
-    },
-    {
+      "id": 3,
       "patientId": 2,
-      "date": "2023-01-28T05:23:00.000Z",
-      "id": 7
+      "date": "Thu Feb 11 2021 10:00:00 GMT-0300 (Brasilia Standard Time)"
+    },
+    {
+      "id": 4,
+      "patientId": 3,
+      "date": "Thu Feb 11 2021 13:00:00 GMT-0300 (Brasilia Standard Time)"
     }
   ],
   "patients": [

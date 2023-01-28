@@ -6,18 +6,17 @@ export interface OptionsProps {
 }
 
 export interface SelectProps {
-  registerName?: string;
-  formRegister?: UseFormRegister<FieldValues>;
   options: OptionsProps[];
+  onChange: () => void;
 }
 
-export function Select({ options, formRegister, registerName, ...rest }: SelectProps) {
+export function Select({ options, onChange, ...rest }: SelectProps) {
   return (
     <label className="flex flex-col appearance-none rounded-md w-full" {...rest}>
       <select
         className="flex text-center appearance-none border-[1px] border-gray-200 p-4 w-full font-normal text-md"
         placeholder="paciente"
-        {...(formRegister ? formRegister(registerName) : [])}
+        onChange={onChange}
       >
         <option value="" disabled selected>
           Paciente

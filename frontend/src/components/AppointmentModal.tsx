@@ -96,7 +96,13 @@ export function AppointmentModal() {
               />
               <p>{errors?.hour && errors.hour.message.toString()}</p>
 
-              <Select options={patientOptions()} formRegister={register} registerName="patient" />
+              <Controller
+                name="patient"
+                control={control}
+                render={({ field: { onChange } }) => (
+                  <Select options={patientOptions()} onChange={onChange} />
+                )}
+              ></Controller>
 
               <p>{errors?.patient && errors.patient.message.toString()}</p>
 
