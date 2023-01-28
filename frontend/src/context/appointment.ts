@@ -8,7 +8,7 @@ import {
 
 interface AppointmentStoreProps {
   appointments: AppointmentProps[];
-  fetchAppointments: () => Promise<AppointmentProps[]>;
+  fetchAppointments: () => Promise<void>;
   createAppointment: (data: NewAppointmentProps) => Promise<void>;
 }
 
@@ -17,7 +17,9 @@ export const useAppointment = create<AppointmentStoreProps>((set, get) => ({
   fetchAppointments: async () => {
     const res = await api.get("/consultations?_expand=patient");
 
-    return res.data;
+    set(() => ({ appointments: res.data }));
+
+    return;
   },
   createAppointment: async (data: NewAppointmentProps) => {
     await api.post("/consultations", { ...data });

@@ -17,16 +17,13 @@ interface Dashboard {
 }
 
 export function Dashboard({ mocked = false }: Dashboard) {
-  const { fetchAppointments } = useAppointment();
-  const [appointments, setAppointments] = useState<AppointmentProps[]>();
+  const { fetchAppointments, appointments } = useAppointment();
 
   const { name } = useAuth();
 
   async function handleFetchAppointments() {
     try {
-      const res = await fetchAppointments();
-
-      setAppointments(res);
+      await fetchAppointments();
     } catch (error) {
       return notify("Erro ao acessar agendamentos", "warning");
     }
