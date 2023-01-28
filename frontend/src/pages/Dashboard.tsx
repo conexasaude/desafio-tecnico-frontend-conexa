@@ -6,17 +6,12 @@ import Container from "../components/Container";
 import { Footer } from "../components/Footer";
 import Header from "../components/Header";
 import { useAppointment } from "../context/appointment";
-import { AppointmentProps } from "../types/appointment";
 import { notify } from "../utils/notify";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/auth";
 import { EmpityAppointments } from "../components/EmpityAppointments";
 
-interface Dashboard {
-  mocked?: boolean;
-}
-
-export function Dashboard({ mocked = false }: Dashboard) {
+export function Dashboard() {
   const { fetchAppointments, appointments } = useAppointment();
 
   const { name } = useAuth();
@@ -30,7 +25,7 @@ export function Dashboard({ mocked = false }: Dashboard) {
   }
 
   useEffect(() => {
-    !mocked && handleFetchAppointments();
+    handleFetchAppointments();
   }, [name]);
 
   return (
