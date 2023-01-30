@@ -7,87 +7,17 @@ interface DefaultInputProps {
 }
 
 const argsDisabled = {
-  registerName: {
-    table: {
-      disable: true,
-    },
-  },
-  formRegister: {
-    table: {
-      disable: true,
-    },
-  },
-  errors: {
-    table: {
-      disable: true,
-    },
-  },
-  reactRef: {
-    table: {
-      disable: true,
-    },
-  },
   icon: {
     table: {
       disable: true,
     },
   },
-  tooltipText: {
+  value: {
     table: {
       disable: true,
     },
   },
-  mode: {
-    table: {
-      disable: true,
-    },
-  },
-  reValidateMode: {
-    table: {
-      disable: true,
-    },
-  },
-  defaultValues: {
-    table: {
-      disable: true,
-    },
-  },
-  values: {
-    table: {
-      disable: true,
-    },
-  },
-  resetOptions: {
-    table: {
-      disable: true,
-    },
-  },
-  resolver: {
-    table: {
-      disable: true,
-    },
-  },
-  context: {
-    table: {
-      disable: true,
-    },
-  },
-  criteriaMode: {
-    table: {
-      disable: true,
-    },
-  },
-  shouldUnregister: {
-    table: {
-      disable: true,
-    },
-  },
-  shouldUseNativeValidation: {
-    table: {
-      disable: true,
-    },
-  },
-  delayError: {
+  onChange: {
     table: {
       disable: true,
     },
@@ -101,7 +31,7 @@ export default {
 } as Meta;
 
 export const Default = ({ title, type }: DefaultInputProps) => {
-  return <DefaultInput title={title} type={type} />;
+  return <DefaultInput title={title} type={type} onChange={() => {}} value="" />;
 };
 
 Default.args = {
