@@ -34,6 +34,7 @@ export function AppointmentModal() {
         patientId: data.patient.id,
         date: addHourToDate(data.date, data.hour),
       });
+      toggle();
       return notify("Agendamento Criado!", "success");
     } catch (error) {
       return notify("Erro ao agendar", "warning");
