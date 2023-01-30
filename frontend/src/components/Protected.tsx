@@ -10,7 +10,7 @@ export function Protected({ children }) {
   const bearer = localStorage.getItem("bearer");
 
   useEffect(() => {
-    if (!bearer) {
+    if (!bearer && !name) {
       navigate("/");
     }
   }, [name]);
