@@ -4,6 +4,9 @@ import { OptionsProps, Select, SelectProps } from "../components/Select";
 export default {
   title: "Components/Select",
   component: Select,
+  argTypes: {
+    onChange: { action: "onChange" },
+  },
 } as Meta<SelectProps>;
 
 export const Default = (args) => {

@@ -8,9 +8,10 @@ import { LoginProps } from "../types/auth";
 import { useAuth } from "../context/auth";
 import { notify } from "../utils/notify";
 import { ToastContainer } from "react-toastify";
+import { Controller } from "react-hook-form";
 
 export function LoginForm() {
-  const { register, handleSubmit, errors } = useFormResolver(loginSchema);
+  const { register, handleSubmit, errors, control } = useFormResolver(loginSchema);
   const [showPassword, setShowPassword] = useState(false);
   const passwordInputUseRef = useRef<HTMLInputElement | null>(null);
   const { login } = useAuth();
@@ -36,29 +37,47 @@ export function LoginForm() {
         className="flex flex-col space-y-10 w-full max-w-lg"
         onSubmit={handleSubmit(handleLogin)}
       >
-        <DefaultInput
-          title="E-mail"
-          formRegister={register}
-          registerName="email"
-          placeholder="Digite seu e-mail"
-          errors={errors}
+        <Controller
+          name="email"
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <div>
+              <DefaultInput
+                placeholder="Digite seu e-mail"
+                onChange={onChange}
+                value={value}
+                title="E-mail"
+              />
+              <span className="text-red-500">
+                {errors.email && errors.email.message.toString()}
+              </span>
+            </div>
+          )}
         />
 
         <div className="relative">
-          <DefaultInput
-            icon={<FaRegQuestionCircle className="text-lg text-gray-500" />}
-            title="Senha"
-            formRegister={register}
-            registerName="password"
-            placeholder="Digite sua senha"
-            errors={errors}
-            reactRef={passwordInputUseRef}
-            type="password"
-            tooltipText="Senha de no minimo 8 digitos criada ao se registrar"
+          <Controller
+            name="password"
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <div>
+                <DefaultInput
+                  onChange={onChange}
+                  value={value}
+                  icon={<FaRegQuestionCircle className="text-lg text-gray-500" />}
+                  title="Senha"
+                  placeholder="Digite sua senha"
+                  type="password"
+                  tooltipText="Senha de no minimo 8 digitos criada ao se registrar"
+                />
+                <span className="text-red-500">
+                  {errors.password && errors.password.message.toString()}
+                </span>
+              </div>
+            )}
           />
 
           <div
-            id="password-eye"
             className="absolute right-0 bottom-3 text-2xl text-gray-500 cursor-pointer"
             onClick={() => toggleShowPassword()}
           >

@@ -1,27 +1,21 @@
 import { createRef, MutableRefObject } from "react";
-import { FieldErrorsImpl, FieldValues, UseFormProps, UseFormRegister } from "react-hook-form";
 import { Tooltip } from "./ToolTip";
 
-interface DefaultFieldProps extends UseFormProps, React.HTMLAttributes<HTMLInputElement> {
-  registerName?: string;
-  formRegister?: UseFormRegister<FieldValues>;
-  errors?: Partial<FieldErrorsImpl<{ [x: string]: any }>>;
-  reactRef?: MutableRefObject<HTMLInputElement>;
-  title?: string;
+interface DefaultFieldProps extends React.HTMLAttributes<HTMLInputElement> {
+  title: string;
   icon?: JSX.Element;
   type?: string;
   tooltipText?: string;
+  value: string;
+  onChange: () => void;
 }
 
 export function DefaultInput({
-  registerName,
-  formRegister,
-  errors,
   title,
   icon,
   tooltipText,
   type = "text",
-  reactRef,
+  onChange,
 }: DefaultFieldProps) {
   const toolTipRef = createRef<HTMLDivElement>();
 
@@ -42,22 +36,7 @@ export function DefaultInput({
         </div>
       </div>
 
-      <input
-        type={type}
-        className="border-b-2 w-full"
-        {...(formRegister && formRegister(registerName))}
-        ref={(e) => {
-          if (formRegister) {
-            const { ref } = formRegister(registerName);
-            ref(e);
-            if (reactRef) reactRef.current = e;
-          }
-        }}
-      />
-
-      {registerName && errors[registerName]?.message && (
-        <span className="text-red-400">{errors[registerName]?.message.toString()}</span>
-      )}
+      <input type={type} className="border-b-2 w-full" onChange={onChange} />
     </div>
   );
 }
