@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { api } from "../config/axios";
 import { useAuth } from "../context/auth";
 
 export function Protected({ children }) {
@@ -11,11 +12,12 @@ export function Protected({ children }) {
 
   useEffect(() => {
     if (!bearer && !name) {
-      navigate("/");
+      return navigate("/");
     }
   }, [name]);
 
   if (bearer) {
+    api.defaults.headers.common["Authorization"] = `${localStorage.getItem("bearer")}`;
     return children;
   }
 }
