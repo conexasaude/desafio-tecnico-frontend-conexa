@@ -11,9 +11,10 @@ import { ToastContainer } from "react-toastify";
 import { Controller } from "react-hook-form";
 
 export function LoginForm() {
-  const { register, handleSubmit, errors, control } = useFormResolver(loginSchema);
+  const { handleSubmit, errors, control } = useFormResolver(loginSchema);
+
   const [showPassword, setShowPassword] = useState(false);
-  const passwordInputUseRef = useRef<HTMLInputElement | null>(null);
+
   const { login } = useAuth();
 
   async function handleLogin(formData: LoginProps) {
@@ -26,9 +27,6 @@ export function LoginForm() {
 
   async function toggleShowPassword() {
     setShowPassword(!showPassword);
-    passwordInputUseRef.current.type == "password"
-      ? (passwordInputUseRef.current.type = "text")
-      : (passwordInputUseRef.current.type = "password");
   }
 
   return (
@@ -40,19 +38,21 @@ export function LoginForm() {
         <Controller
           name="email"
           control={control}
-          render={({ field: { onChange, value } }) => (
-            <div>
-              <DefaultInput
-                placeholder="Digite seu e-mail"
-                onChange={onChange}
-                value={value}
-                title="E-mail"
-              />
-              <span className="text-red-500">
-                {errors.email && errors.email.message.toString()}
-              </span>
-            </div>
-          )}
+          render={({ field: { onChange, value }, fieldState }) => {
+            return (
+              <div>
+                <DefaultInput
+                  placeholder="Digite seu e-mail"
+                  onChange={onChange}
+                  value={value}
+                  title="E-mail"
+                />
+                <span className="text-red-500">
+                  {errors.email && errors.email.message.toString()}
+                </span>
+              </div>
+            );
+          }}
         />
 
         <div className="relative">
@@ -67,7 +67,7 @@ export function LoginForm() {
                   icon={<FaRegQuestionCircle className="text-lg text-gray-500" />}
                   title="Senha"
                   placeholder="Digite sua senha"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   tooltipText="Senha de no minimo 8 digitos criada ao se registrar"
                 />
                 <span className="text-red-500">

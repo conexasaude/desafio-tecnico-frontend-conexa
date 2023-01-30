@@ -8,15 +8,10 @@ interface DefaultFieldProps extends React.HTMLAttributes<HTMLInputElement> {
   tooltipText?: string;
   value: string;
   onChange: () => void;
+  reactRef?: MutableRefObject<HTMLInputElement>;
 }
 
-export function DefaultInput({
-  title,
-  icon,
-  tooltipText,
-  type = "text",
-  onChange,
-}: DefaultFieldProps) {
+export function DefaultInput({ title, icon, tooltipText, type, onChange }: DefaultFieldProps) {
   const toolTipRef = createRef<HTMLDivElement>();
 
   return (

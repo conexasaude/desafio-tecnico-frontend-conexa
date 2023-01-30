@@ -9,9 +9,10 @@ export function useFormResolver(schema: AnyObjectSchema | Lazy<any, unknown>) {
     handleSubmit,
     formState: { errors },
     control,
+    setValue,
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  return { register, handleSubmit, errors, control };
+  return { register, handleSubmit, errors, control, setValue };
 }
