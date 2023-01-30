@@ -8,6 +8,7 @@ import { useModal } from "../context/modal";
 import { usePatient } from "../context/patient";
 import { useFormResolver } from "../hooks/useFormResolver";
 import { newAppointmentSchema } from "../schemas/newAppointmentSchema";
+import { NewAppointmentProps } from "../types/appointment";
 import { PatientProps } from "../types/patient";
 import { addHourToDate } from "../utils/addHourToDate";
 import { notify } from "../utils/notify";
@@ -28,13 +29,12 @@ export function AppointmentModal() {
 
   const { register, handleSubmit, errors, control } = useFormResolver(newAppointmentSchema);
 
-  async function handleNewAppointment(data) {
+  async function handleNewAppointment(data: NewAppointmentProps) {
     try {
-      await createAppointment({
-        patientId: data.patient.id,
-        date: addHourToDate(data.date, data.hour),
-      });
+      await createAppointment(data);
+
       toggle();
+
       return notify("Agendamento Criado!", "success");
     } catch (error) {
       return notify("Erro ao agendar", "warning");

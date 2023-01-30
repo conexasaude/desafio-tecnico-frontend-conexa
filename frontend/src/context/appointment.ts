@@ -1,10 +1,6 @@
 import { create } from "zustand";
 import { api } from "../config/axios";
-import {
-  AppointmentProps,
-  NewAppointmentProps,
-  NewAppointmentResponseProps,
-} from "../types/appointment";
+import { AppointmentProps, NewAppointmentProps } from "../types/appointment";
 
 interface AppointmentStoreProps {
   appointments: AppointmentProps[];

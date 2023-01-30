@@ -1,5 +1,3 @@
-import { MomentInput } from "moment";
-
 interface PatientProps {
   id: number;
   first_name: string;
@@ -10,7 +8,7 @@ interface PatientProps {
 export interface AppointmentProps {
   id: number;
   patientId: number;
-  date: MomentInput;
+  date: string;
   patient: PatientProps;
 }
 
@@ -22,5 +20,7 @@ export interface NewAppointmentResponseProps {
 
 export interface NewAppointmentProps {
   patientId: number;
+  patient: PatientProps;
   date: Date;
+  hour: string;
 }
