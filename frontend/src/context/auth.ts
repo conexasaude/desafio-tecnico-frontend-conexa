@@ -20,15 +20,12 @@ export const useAuth = create<UserProps>((set) => ({
   login: async (data) => {
     const res = await api.post("/login", { ...data });
 
-    if (res.status == 200) {
-      localStorage.setItem("bearer", res.data.token);
-      localStorage.setItem("name", res.data.name);
-      api.defaults.headers.common["Authorization"] = `${localStorage.getItem("bearer")}`;
-      console.log(api.defaults.headers.common["Authorization"]);
+    localStorage.setItem("bearer", res.data.token);
+    localStorage.setItem("name", res.data.name);
+    api.defaults.headers.common["Authorization"] = `${localStorage.getItem("bearer")}`;
 
-      set((state) => ({ ...state, name: res.data.name }));
-      return res.data.name;
-    }
+    set((state) => ({ ...state, name: res.data.name }));
+    return res.data.name;
   },
   logout: () => {
     localStorage.setItem("bearer", "");
