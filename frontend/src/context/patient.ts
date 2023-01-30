@@ -11,10 +11,11 @@ interface PatientStoreProps {
 export const usePatient = create<PatientStoreProps>((set, get) => ({
   patients: [],
   setPatients: (patients: PatientProps[]) => {
-    set((state) => ({ ...state, patients }));
+    set(() => ({ patients }));
   },
   fetchPatients: async () => {
     const { data } = await api.get("/patients");
+    set(() => ({ patients: data }));
     return data;
   },
 }));

@@ -49,6 +49,8 @@ export function AppointmentModal() {
   }
 
   function patientOptions() {
+    console.log(patients);
+
     return optionsMaker<PatientProps>(patients, ["first_name", "last_name"]);
   }
 
