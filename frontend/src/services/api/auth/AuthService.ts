@@ -1,24 +1,19 @@
 import { api } from '../axios-config'
 
-interface IAuth {
-  accessToken: string
+interface AuthProps {
+  email: string
+  password: string
 }
 
-export const auth = async (
-  email: string,
-  password: string,
-): Promise<IAuth | Error> => {
+export const auth = async (dataLogin: AuthProps) => {
   try {
-    const { data } = await api.post('/login', { data: { email, password } })
+    const response = api.post('/login', dataLogin)
 
-    if (data) {
-      return data
+    if (response) {
+      return response
     }
-
-    return new Error('Erro no login')
   } catch (error) {
     console.log(error)
-    return new Error((error as { message: string }).message || 'Erro no login')
   }
 }
 

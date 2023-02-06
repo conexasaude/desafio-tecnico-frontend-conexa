@@ -8,9 +8,13 @@ import {
 } from 'react'
 import { Authservice } from '../services/api/auth/AuthService'
 
+interface AuthProps {
+  email: string
+  password: string
+}
 interface AuthContextProviderProps {
   isAuthenticated: boolean
-  handleLogin: (email: string, password: string) => Promise<string | void>
+  handleLogin: (data: AuthProps) => Promise<string | void>
   handleLogout: () => void
 }
 
@@ -24,24 +28,24 @@ const LOCAL_STORAGE_KEY__ACCESS_TOKEN = 'APP_ACCESS_TOKEN'
 
 export function AuthProvider({ children }: AuthContextProps) {
   const [accessToken, setAcessToken] = useState<string>()
+  console.log(accessToken)
 
   useEffect(() => {
-    // const accessToken = localStorage.getItem(LOCAL_STORAGE_KEY__ACCESS_TOKEN)
-    // if (accessToken) {
-    //   setAcessToken(JSON.parse(accessToken))
-    // } else {
-    //   setAcessToken(undefined)
-    // }
+    const accessToken = localStorage.getItem(LOCAL_STORAGE_KEY__ACCESS_TOKEN)
+    if (accessToken) {
+      setAcessToken(JSON.parse(accessToken))
+    } else {
+      setAcessToken(undefined)
+    }
   }, [])
 
-  const handleLogin = useCallback(async (email: string, password: string) => {
-    const result = await Authservice.auth(email, password)
-
-    if (result instanceof Error) {
-      return result.message
-    } else {
-      // localStorage.setItem(LOCAL_STORAGE_KEY__ACCESS_TOKEN, JSON.stringify(result))
-      console.log(result)
+  const handleLogin = useCallback(async (data: AuthProps) => {
+    const response = await Authservice.auth({
+      email: data.email,
+      password: data.password,
+    })
+    if (response) {
+      setAcessToken(response.data.token)
     }
   }, [])
 
