@@ -9,6 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { LoginFormInputs } from './LoginFormInputs'
 import { useContext } from 'react'
 import { AuthContext } from '../../../../contexts/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 const LoginFormSchema = zod.object({
   email: zod.string().email(),
@@ -18,6 +19,7 @@ const LoginFormSchema = zod.object({
 type LoginFormInputsType = zod.infer<typeof LoginFormSchema>
 
 export function LoginForm() {
+  const navigate = useNavigate()
   const { handleLogin } = useContext(AuthContext)
   const LoginForm = useForm<LoginFormInputsType>({
     resolver: zodResolver(LoginFormSchema),
@@ -26,7 +28,12 @@ export function LoginForm() {
   const { handleSubmit } = LoginForm
 
   async function handleLoginSubmit(data: LoginFormInputsType) {
-    await handleLogin(data)
+    try {
+      await handleLogin(data)
+      navigate('/consultations')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

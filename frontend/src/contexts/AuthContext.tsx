@@ -28,7 +28,6 @@ const LOCAL_STORAGE_KEY__ACCESS_TOKEN = 'APP_ACCESS_TOKEN'
 
 export function AuthProvider({ children }: AuthContextProps) {
   const [accessToken, setAcessToken] = useState<string>()
-  console.log(accessToken)
 
   useEffect(() => {
     const accessToken = localStorage.getItem(LOCAL_STORAGE_KEY__ACCESS_TOKEN)
@@ -54,7 +53,8 @@ export function AuthProvider({ children }: AuthContextProps) {
     localStorage.removeItem(LOCAL_STORAGE_KEY__ACCESS_TOKEN)
   }, [])
 
-  const isAuthenticated = useMemo(() => !!accessToken, [])
+  const isAuthenticated = useMemo(() => !!accessToken, [accessToken])
+  console.log(isAuthenticated)
 
   return (
     <AuthContext.Provider

@@ -7,7 +7,7 @@ interface AuthProps {
 
 export const auth = async (dataLogin: AuthProps) => {
   try {
-    const response = api.post('/login', dataLogin)
+    const response = await api.post('/login', dataLogin)
 
     if (response) {
       return response
