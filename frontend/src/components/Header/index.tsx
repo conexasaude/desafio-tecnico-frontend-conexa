@@ -1,14 +1,15 @@
-import { HeaderContainer, HeaderContent } from './styles'
 import logoConexa from '../../assets/logo-conexa.svg'
 import { Button } from '../Button'
+import { HeaderFooterContent } from '../styles'
+import { HeaderContainer } from './styles'
 
 export function Header() {
   return (
     <HeaderContainer>
-      <HeaderContent>
+      <HeaderFooterContent>
         <img src={logoConexa} alt="logo" />
         <Button variant="outline" text="Sair" />
-      </HeaderContent>
+      </HeaderFooterContent>
     </HeaderContainer>
   )
 }
