@@ -14,7 +14,6 @@ export const ButtonContainer = styled.button<ButtonProps>`
   border: 2px solid ${({ theme }) => theme.colors['base-blue']};
   border-radius: 6px;
   transition: 0.4s;
-  font-weight: bold;
 
   &:hover {
     background: ${({ theme }) => theme.colors['base-blue-dark']};
