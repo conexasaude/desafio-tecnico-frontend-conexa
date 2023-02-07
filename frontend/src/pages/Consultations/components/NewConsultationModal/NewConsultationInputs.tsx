@@ -8,13 +8,11 @@ import { useEffect } from 'react'
 registerLocale('br', br)
 
 export function NewConsultationInputs() {
-  const patients = useContextSelector(PatientsContext, (context) => {
-    return context.patients
+  const patientsContext = useContextSelector(PatientsContext, (context) => {
+    return context
   })
 
-  const fetchPatients = useContextSelector(PatientsContext, (context) => {
-    return context.fetchPatients
-  })
+  const { patients, fetchPatients } = patientsContext
 
   const { register, control } = useFormContext()
 

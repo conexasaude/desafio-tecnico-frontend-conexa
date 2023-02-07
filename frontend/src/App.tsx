@@ -8,7 +8,6 @@ import { ConsultationsProvider } from './contexts/ConsultationsContext'
 import { PatientsProvider } from './contexts/PatientsContext'
 
 import 'react-datepicker/dist/react-datepicker.css'
-import 'react-toastify/dist/ReactToastify.css'
 
 export function App() {
   return (

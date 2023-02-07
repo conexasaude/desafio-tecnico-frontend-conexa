@@ -18,7 +18,6 @@ export function Footer() {
           <Dialog.Trigger asChild>
             <Button variant="inline" text="Agendar Consulta" />
           </Dialog.Trigger>
-
           <NewConsultationModal />
         </Dialog.Root>
       </HeaderFooterContent>

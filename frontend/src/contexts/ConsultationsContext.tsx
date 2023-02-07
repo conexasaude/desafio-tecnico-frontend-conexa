@@ -51,8 +51,12 @@ export function ConsultationsProvider({
 
   const createNewConsultation = useCallback(
     async (data: NewConsultationProps) => {
-      await api.post('/consultations', data)
-      await fetchConsultations()
+      try {
+        await api.post('/consultations', data)
+        await fetchConsultations()
+      } catch (error) {
+        console.log(error)
+      }
     },
     [fetchConsultations],
   )

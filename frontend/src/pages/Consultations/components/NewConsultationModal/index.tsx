@@ -4,6 +4,9 @@ import logoConexa from '../../../../assets/logo-conexa.svg'
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { X } from 'phosphor-react'
+import { NewConsultationInputs } from './NewConsultationInputs'
+import { useContextSelector } from 'use-context-selector'
+import { ConsultationsContext } from '../../../../contexts/ConsultationsContext'
 import {
   ButtonModalSubmit,
   CloseButton,
@@ -11,9 +14,6 @@ import {
   ImgContainer,
   Overlay,
 } from './styles'
-import { NewConsultationInputs } from './NewConsultationInputs'
-import { useContextSelector } from 'use-context-selector'
-import { ConsultationsContext } from '../../../../contexts/ConsultationsContext'
 
 const newConsulationSchema = zod.object({
   patientId: zod.string(),
