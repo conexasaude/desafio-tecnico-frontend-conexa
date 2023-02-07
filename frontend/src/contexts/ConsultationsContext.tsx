@@ -8,9 +8,14 @@ import {
 import { ConsultationsService } from '../services/api/consultations/Consultations'
 
 interface Consultation {
-  patientId: number
-  date: Date
-  patient: object
+  id: number
+  date: string
+  patient: {
+    id: number
+    email: string
+    first_name: string
+    last_name: string
+  }
 }
 
 interface ConsultationsContextType {
