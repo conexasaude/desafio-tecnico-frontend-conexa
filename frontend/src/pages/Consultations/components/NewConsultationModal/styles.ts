@@ -54,3 +54,8 @@ export const CloseButton = styled(Dialog.Close)`
 export const ButtonModalSubmit = styled(Button)`
   justify-content: center;
 `
+
+export const ImgContainer = styled.div`
+  margin: 2rem;
+  text-align: center;
+`

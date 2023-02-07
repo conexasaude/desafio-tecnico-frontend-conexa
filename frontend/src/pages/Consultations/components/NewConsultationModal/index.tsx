@@ -1,9 +1,16 @@
 import * as zod from 'zod'
 import * as Dialog from '@radix-ui/react-dialog'
+import logoConexa from '../../../../assets/logo-conexa.svg'
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { X } from 'phosphor-react'
-import { ButtonModalSubmit, CloseButton, Content, Overlay } from './styles'
+import {
+  ButtonModalSubmit,
+  CloseButton,
+  Content,
+  ImgContainer,
+  Overlay,
+} from './styles'
 import { NewConsultationInputs } from './NewConsultationInputs'
 import { useContextSelector } from 'use-context-selector'
 import { ConsultationsContext } from '../../../../contexts/ConsultationsContext'
@@ -52,7 +59,9 @@ export function NewConsultationModal() {
           <CloseButton>
             <X size={24} />
           </CloseButton>
-
+          <ImgContainer>
+            <img src={logoConexa} alt="logo" />
+          </ImgContainer>
           <form onSubmit={handleSubmit(handleNewConsultation)}>
             <NewConsultationInputs />
             <ButtonModalSubmit variant="inline" text="Agendar" type="submit" />

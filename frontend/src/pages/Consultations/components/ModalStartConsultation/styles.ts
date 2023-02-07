@@ -1,5 +1,10 @@
 import styled from 'styled-components'
-import { CloseButton, Content, Overlay } from '../NewConsultationModal/styles'
+import {
+  CloseButton,
+  Content,
+  Overlay,
+  ImgContainer,
+} from '../NewConsultationModal/styles'
 
 export const OverlayStart = styled(Overlay)`
   position: fixed;
@@ -12,6 +17,8 @@ export const OverlayStart = styled(Overlay)`
 export const ContentStart = styled(Content)``
 
 export const CloseButtonStart = styled(CloseButton)``
+
+export const ImgContainerStart = styled(ImgContainer)``
 
 export const ContentContainer = styled.div`
   margin-top: 3rem;
