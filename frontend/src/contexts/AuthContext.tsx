@@ -44,6 +44,10 @@ export function AuthProvider({ children }: AuthContextProps) {
       password: data.password,
     })
     if (response) {
+      localStorage.setItem(
+        LOCAL_STORAGE_KEY__ACCESS_TOKEN,
+        JSON.parse(response.data.token),
+      )
       setAcessToken(response.data.token)
     }
   }, [])
@@ -54,7 +58,6 @@ export function AuthProvider({ children }: AuthContextProps) {
   }, [])
 
   const isAuthenticated = useMemo(() => !!accessToken, [accessToken])
-  console.log(isAuthenticated)
 
   return (
     <AuthContext.Provider
