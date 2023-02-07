@@ -48,12 +48,10 @@ export function ConsultationsProvider({
 
   const createNewConsultation = useCallback(
     async (data: NewConsultationProps) => {
-      const response = await api.post('/consultations', data)
-
-      setConsultations((state) => [response.data, ...state])
-      console.log(response)
+      await api.post('/consultations', data)
+      await fetchConsultations()
     },
-    [],
+    [fetchConsultations],
   )
 
   useEffect(() => {
