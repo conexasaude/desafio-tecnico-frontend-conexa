@@ -8,9 +8,11 @@ import { useNavigate } from 'react-router-dom'
 
 export function Header() {
   const navigate = useNavigate()
-  const handleLogout = useContextSelector(AuthContext, (context) => {
-    return context.handleLogout
+  const contextAuth = useContextSelector(AuthContext, (context) => {
+    return context
   })
+
+  const { handleLogout, isAuthenticated } = contextAuth
 
   function handleLogoutUser() {
     try {
@@ -25,7 +27,9 @@ export function Header() {
     <HeaderContainer>
       <HeaderFooterContent>
         <img src={logoConexa} alt="logo" />
-        <Button variant="outline" text="Sair" onClick={handleLogoutUser} />
+        {isAuthenticated && (
+          <Button variant="outline" text="Sair" onClick={handleLogoutUser} />
+        )}
       </HeaderFooterContent>
     </HeaderContainer>
   )

@@ -40,7 +40,6 @@ export function ConsultationsProvider({
 }: ConsultationsProviderProps) {
   const [consultations, setConsultations] = useState<Consultation[]>([])
   const [startConsultation, setStartConsultation] = useState<Consultation>()
-  console.log(startConsultation)
 
   const fetchConsultations = useCallback(async () => {
     const response = await ConsultationsService.getAll()

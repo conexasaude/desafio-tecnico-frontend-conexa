@@ -6,7 +6,7 @@ export const errorInterceptor = (error: AxiosError) => {
   }
 
   if (error.response?.status === 401) {
-    // Algum erro
+    alert('Usuário nao cadastrado')
   }
 
   return Promise.reject(error)

@@ -10,7 +10,6 @@ import { LoginFormInputs } from './LoginFormInputs'
 import { useContextSelector } from 'use-context-selector'
 import { AuthContext } from '../../../../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
-
 const LoginFormSchema = zod.object({
   email: zod.string().email(),
   password: zod.string(),
@@ -31,8 +30,9 @@ export function LoginForm() {
 
   async function handleLoginSubmit(data: LoginFormInputsType) {
     try {
-      await handleLogin(data)
-      navigate('/consultations')
+      await handleLogin(data).then(() => {
+        navigate('/consultations')
+      })
     } catch (error) {
       console.log(error)
     }

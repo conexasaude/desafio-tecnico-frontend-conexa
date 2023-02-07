@@ -5,9 +5,10 @@ import { BrowserRouter } from 'react-router-dom'
 import { Router } from './Router'
 import { AuthProvider } from './contexts/AuthContext'
 import { ConsultationsProvider } from './contexts/ConsultationsContext'
+import { PatientsProvider } from './contexts/PatientsContext'
 
 import 'react-datepicker/dist/react-datepicker.css'
-import { PatientsProvider } from './contexts/PatientsContext'
+import 'react-toastify/dist/ReactToastify.css'
 
 export function App() {
   return (
