@@ -6,6 +6,8 @@ import { Router } from './Router'
 import { AuthProvider } from './contexts/AuthContext'
 import { ConsultationsProvider } from './contexts/ConsultationsContext'
 
+import 'react-datepicker/dist/react-datepicker.css'
+
 export function App() {
   return (
     <AuthProvider>

@@ -9,6 +9,7 @@ function TableConsultationsListGet() {
   const consultations = useContextSelector(ConsultationsContext, (context) => {
     return context.consultations
   })
+  const numbersScheduledAppointments = consultations.length
 
   const fetchConsultations = useContextSelector(
     ConsultationsContext,
@@ -20,7 +21,13 @@ function TableConsultationsListGet() {
   useEffect(() => {
     fetchConsultations()
   }, [fetchConsultations])
-  const numbersScheduledAppointments = consultations.length
+
+  function handleClickFilterConsultation(consultationId: number) {
+    const filterConsultation = consultations.filter(
+      (consultation) => consultation.id === consultationId,
+    )
+    console.log('em atendimento', filterConsultation[0])
+  }
 
   return (
     <TableConsultationsContainer>
@@ -34,7 +41,11 @@ function TableConsultationsListGet() {
                 <div>{dateFormatter(consultation.date)}</div>
               </td>
               <td>
-                <Button variant="inline" text="Atender" />
+                <Button
+                  variant="inline"
+                  text="Atender"
+                  onClick={() => handleClickFilterConsultation(consultation.id)}
+                />
               </td>
             </tr>
           ))}

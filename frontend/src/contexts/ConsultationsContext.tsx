@@ -30,7 +30,6 @@ export function ConsultationsProvider({
   children,
 }: ConsultationsProviderProps) {
   const [consultations, setConsultations] = useState<Consultation[]>([])
-  console.log(consultations)
 
   const fetchConsultations = useCallback(async () => {
     const response = await ConsultationsService.getAll()
