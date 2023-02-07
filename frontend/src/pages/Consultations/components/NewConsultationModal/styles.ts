@@ -39,6 +39,8 @@ export const Content = styled(Dialog.Content)`
   }
 `
 
+export const NewConsultationFormContainer = styled.form``
+
 export const CloseButton = styled(Dialog.Close)`
   position: absolute;
   background: transparent;

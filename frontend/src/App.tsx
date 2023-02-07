@@ -7,18 +7,21 @@ import { AuthProvider } from './contexts/AuthContext'
 import { ConsultationsProvider } from './contexts/ConsultationsContext'
 
 import 'react-datepicker/dist/react-datepicker.css'
+import { PatientsProvider } from './contexts/PatientsContext'
 
 export function App() {
   return (
     <AuthProvider>
-      <ConsultationsProvider>
-        <ThemeProvider theme={defaultTheme}>
-          <GlobalStyle />
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
-        </ThemeProvider>
-      </ConsultationsProvider>
+      <PatientsProvider>
+        <ConsultationsProvider>
+          <ThemeProvider theme={defaultTheme}>
+            <GlobalStyle />
+            <BrowserRouter>
+              <Router />
+            </BrowserRouter>
+          </ThemeProvider>
+        </ConsultationsProvider>
+      </PatientsProvider>
     </AuthProvider>
   )
 }

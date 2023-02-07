@@ -1,4 +1,4 @@
-import { useEffect, memo } from 'react'
+import { memo } from 'react'
 import { useContextSelector } from 'use-context-selector'
 import { Button } from '../../../../components/Button'
 import { ConsultationsContext } from '../../../../contexts/ConsultationsContext'
@@ -10,17 +10,6 @@ function TableConsultationsListGet() {
     return context.consultations
   })
   const numbersScheduledAppointments = consultations.length
-
-  const fetchConsultations = useContextSelector(
-    ConsultationsContext,
-    (context) => {
-      return context.fetchConsultations
-    },
-  )
-
-  useEffect(() => {
-    fetchConsultations()
-  }, [fetchConsultations])
 
   function handleClickFilterConsultation(consultationId: number) {
     const filterConsultation = consultations.filter(

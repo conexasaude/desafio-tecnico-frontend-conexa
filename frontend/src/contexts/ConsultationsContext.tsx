@@ -1,5 +1,6 @@
-import { ReactNode, useCallback, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
 import { createContext } from 'use-context-selector'
+import { api } from '../services/api/axios-config'
 import { ConsultationsService } from '../services/api/consultations/Consultations'
 
 interface Consultation {
@@ -13,9 +14,15 @@ interface Consultation {
   }
 }
 
+interface NewConsultationProps {
+  patientId: number
+  date: Date
+}
+
 interface ConsultationsContextType {
   consultations: Consultation[]
   fetchConsultations: () => Promise<void>
+  createNewConsultation: (data: NewConsultationProps) => Promise<void>
 }
 
 interface ConsultationsProviderProps {
@@ -39,9 +46,23 @@ export function ConsultationsProvider({
     }
   }, [])
 
+  const createNewConsultation = useCallback(
+    async (data: NewConsultationProps) => {
+      const response = await api.post('/consultations', data)
+
+      setConsultations((state) => [response.data, ...state])
+      console.log(response)
+    },
+    [],
+  )
+
+  useEffect(() => {
+    fetchConsultations()
+  }, [fetchConsultations])
+
   return (
     <ConsultationsContext.Provider
-      value={{ consultations, fetchConsultations }}
+      value={{ consultations, fetchConsultations, createNewConsultation }}
     >
       {children}
     </ConsultationsContext.Provider>

@@ -2,12 +2,7 @@ import { api } from '../axios-config'
 
 export const getAll = async () => {
   return await api
-    .get('/consultations?_expand=patient', {
-      params: {
-        _sort: 'date',
-        _order: 'cresc',
-      },
-    })
+    .get('/patients')
     .then((result) => {
       return result.data
     })
@@ -16,6 +11,6 @@ export const getAll = async () => {
     })
 }
 
-export const ConsultationsService = {
+export const PatientsService = {
   getAll,
 }
