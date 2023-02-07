@@ -4,6 +4,10 @@ import { Button } from '../../../../components/Button'
 export const LoginFormContainer = styled.form`
   width: 16rem;
   margin-top: 5.625rem;
+
+  @media only screen and (max-width: 600px) {
+    margin-top: 0;
+  }
 `
 export const DivFormContainer = styled.div`
   display: flex;

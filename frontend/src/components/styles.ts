@@ -1,10 +1,24 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const HeaderFooterContent = styled.div`
+interface HeaderFooterProps {
+  variant: boolean
+}
+
+export const HeaderFooterContent = styled.div<HeaderFooterProps>`
   width: 100%;
   margin: 0 auto;
   padding: 0 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media only screen and (max-width: 600px) {
+    justify-content: center;
+
+    ${(props) =>
+      props.variant &&
+      css`
+        justify-content: space-between;
+      `}
+  }
 `

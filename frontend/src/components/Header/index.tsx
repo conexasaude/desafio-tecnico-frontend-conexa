@@ -25,7 +25,7 @@ export function Header() {
 
   return (
     <HeaderContainer>
-      <HeaderFooterContent>
+      <HeaderFooterContent variant={isAuthenticated}>
         <img src={logoConexa} alt="logo" />
         {isAuthenticated && (
           <Button variant="outline" text="Sair" onClick={handleLogoutUser} />

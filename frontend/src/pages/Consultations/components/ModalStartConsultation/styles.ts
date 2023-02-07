@@ -14,7 +14,12 @@ export const OverlayStart = styled(Overlay)`
   background: rgba(0, 0, 0, 0.75);
 `
 
-export const ContentStart = styled(Content)``
+export const ContentStart = styled(Content)`
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+    font-size: 12px;
+  }
+`
 
 export const CloseButtonStart = styled(CloseButton)``
 
