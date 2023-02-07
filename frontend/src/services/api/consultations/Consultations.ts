@@ -1,14 +1,14 @@
 import { api } from '../axios-config'
 
 export const getAll = async () => {
-  try {
-    const response = await api.get('/consultations?_expand=patient')
-    if (response) {
-      return response.data
-    }
-  } catch (error) {
-    console.log(error)
-  }
+  return await api
+    .get('/consultations?_expand=patient')
+    .then((result) => {
+      return result.data
+    })
+    .catch((err) => {
+      return err
+    })
 }
 
 export const ConsultationsService = {

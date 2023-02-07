@@ -1,18 +1,32 @@
-import { useContext } from 'react'
+import { useEffect, memo } from 'react'
+import { useContextSelector } from 'use-context-selector'
 import { Button } from '../../../../components/Button'
 import { ConsultationsContext } from '../../../../contexts/ConsultationsContext'
 import { dateFormatter } from '../../../../utils/formatter'
 import { TableConsultationsContainer, TableConsultations } from './styles'
 
-export function TableConsultationsList() {
-  const { consultations } = useContext(ConsultationsContext)
+function TableConsultationsListGet() {
+  const consultations = useContextSelector(ConsultationsContext, (context) => {
+    return context.consultations
+  })
+
+  const fetchConsultations = useContextSelector(
+    ConsultationsContext,
+    (context) => {
+      return context.fetchConsultations
+    },
+  )
+
+  useEffect(() => {
+    fetchConsultations()
+  }, [fetchConsultations])
   const numbersScheduledAppointments = consultations.length
 
   return (
     <TableConsultationsContainer>
+      <span>{`${numbersScheduledAppointments} consultas agendadas`}</span>
       <TableConsultations>
         <tbody>
-          <span>{`${numbersScheduledAppointments} consultas agendadas`}</span>
           {consultations.map((consultation) => (
             <tr key={consultation.id}>
               <td>
@@ -29,3 +43,5 @@ export function TableConsultationsList() {
     </TableConsultationsContainer>
   )
 }
+
+export const TableConsultationsList = memo(TableConsultationsListGet)

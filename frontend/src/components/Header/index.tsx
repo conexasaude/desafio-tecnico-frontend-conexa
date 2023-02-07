@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContextSelector } from 'use-context-selector'
 import logoConexa from '../../assets/logo-conexa.svg'
 import { AuthContext } from '../../contexts/AuthContext'
 import { Button } from '../Button'
@@ -8,7 +8,9 @@ import { useNavigate } from 'react-router-dom'
 
 export function Header() {
   const navigate = useNavigate()
-  const { handleLogout } = useContext(AuthContext)
+  const handleLogout = useContextSelector(AuthContext, (context) => {
+    return context.handleLogout
+  })
 
   function handleLogoutUser() {
     try {

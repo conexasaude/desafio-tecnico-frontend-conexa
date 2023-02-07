@@ -1,10 +1,5 @@
-import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react'
+import { ReactNode, useCallback, useState } from 'react'
+import { createContext } from 'use-context-selector'
 import { ConsultationsService } from '../services/api/consultations/Consultations'
 
 interface Consultation {
@@ -20,6 +15,7 @@ interface Consultation {
 
 interface ConsultationsContextType {
   consultations: Consultation[]
+  fetchConsultations: () => Promise<void>
 }
 
 interface ConsultationsProviderProps {
@@ -44,12 +40,10 @@ export function ConsultationsProvider({
     }
   }, [])
 
-  useEffect(() => {
-    fetchConsultations()
-  }, [fetchConsultations])
-
   return (
-    <ConsultationsContext.Provider value={{ consultations }}>
+    <ConsultationsContext.Provider
+      value={{ consultations, fetchConsultations }}
+    >
       {children}
     </ConsultationsContext.Provider>
   )

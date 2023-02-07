@@ -7,7 +7,9 @@ import { errorInterceptor, responseInterceptor } from './interceptors'
 export const api = axios.create({
   baseURL: 'http://localhost:3333',
   headers: {
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZmFrZSB0b2tlbiJ9.-tvEhfr6_VHfKU9bumcmdvku-IfwZDz2LtjeqZOuH-g`,
+    Authorization: `Bearer ${JSON.parse(
+      localStorage.getItem('APP_ACCESS_TOKEN') || '[]',
+    )}`,
   },
 })
 

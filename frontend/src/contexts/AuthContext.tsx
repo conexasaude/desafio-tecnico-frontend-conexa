@@ -1,11 +1,5 @@
-import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react'
+import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
+import { createContext } from 'use-context-selector'
 import { Authservice } from '../services/api/auth/AuthService'
 
 interface AuthProps {
@@ -30,12 +24,13 @@ export function AuthProvider({ children }: AuthContextProps) {
   const [accessToken, setAcessToken] = useState<string>()
 
   useEffect(() => {
-    // const accessToken = localStorage.getItem(LOCAL_STORAGE_KEY__ACCESS_TOKEN)
-    // if (accessToken) {
-    //   setAcessToken(JSON.parse(accessToken))
-    // } else {
-    //   setAcessToken(undefined)
-    // }
+    const accessToken = localStorage.getItem(LOCAL_STORAGE_KEY__ACCESS_TOKEN)
+
+    if (accessToken) {
+      setAcessToken(JSON.parse(accessToken))
+    } else {
+      setAcessToken(undefined)
+    }
   }, [])
 
   const handleLogin = useCallback(async (data: AuthProps) => {
@@ -43,8 +38,12 @@ export function AuthProvider({ children }: AuthContextProps) {
       email: data.email,
       password: data.password,
     })
+
     if (response) {
-      // localStorage.setItem(LOCAL_STORAGE_KEY__ACCESS_TOKEN, response.data.token)
+      localStorage.setItem(
+        LOCAL_STORAGE_KEY__ACCESS_TOKEN,
+        JSON.stringify(response.data.token),
+      )
       setAcessToken(response.data.token)
     }
   }, [])

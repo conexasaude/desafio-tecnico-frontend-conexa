@@ -7,7 +7,7 @@ import { useForm, FormProvider } from 'react-hook-form'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { LoginFormInputs } from './LoginFormInputs'
-import { useContext } from 'react'
+import { useContextSelector } from 'use-context-selector'
 import { AuthContext } from '../../../../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
@@ -20,7 +20,9 @@ type LoginFormInputsType = zod.infer<typeof LoginFormSchema>
 
 export function LoginForm() {
   const navigate = useNavigate()
-  const { handleLogin } = useContext(AuthContext)
+  const handleLogin = useContextSelector(AuthContext, (context) => {
+    return context.handleLogin
+  })
   const LoginForm = useForm<LoginFormInputsType>({
     resolver: zodResolver(LoginFormSchema),
   })
