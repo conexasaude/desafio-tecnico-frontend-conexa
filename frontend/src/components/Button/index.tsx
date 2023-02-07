@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react'
+import { forwardRef, ButtonHTMLAttributes } from 'react'
 import { ButtonContainer } from './styles'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -6,10 +6,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant: 'outline' | 'inline'
 }
 
-export function Button({ text, variant, ...props }: ButtonProps) {
-  return (
-    <ButtonContainer variant={variant} {...props}>
-      {text}
-    </ButtonContainer>
-  )
-}
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ text, variant, ...props }, ref) => {
+    return (
+      <ButtonContainer variant={variant} {...props}>
+        {text}
+      </ButtonContainer>
+    )
+  },
+)
+
+Button.displayName = 'button'

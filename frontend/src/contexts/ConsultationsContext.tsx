@@ -21,8 +21,10 @@ interface NewConsultationProps {
 
 interface ConsultationsContextType {
   consultations: Consultation[]
+  startConsultation: Consultation | undefined
   fetchConsultations: () => Promise<void>
   createNewConsultation: (data: NewConsultationProps) => Promise<void>
+  startNewConsultation: (data: Consultation) => void
 }
 
 interface ConsultationsProviderProps {
@@ -37,6 +39,8 @@ export function ConsultationsProvider({
   children,
 }: ConsultationsProviderProps) {
   const [consultations, setConsultations] = useState<Consultation[]>([])
+  const [startConsultation, setStartConsultation] = useState<Consultation>()
+  console.log(startConsultation)
 
   const fetchConsultations = useCallback(async () => {
     const response = await ConsultationsService.getAll()
@@ -54,13 +58,25 @@ export function ConsultationsProvider({
     [fetchConsultations],
   )
 
+  function startNewConsultation(consultation: Consultation) {
+    if (consultation) {
+      setStartConsultation(consultation)
+    }
+  }
+
   useEffect(() => {
     fetchConsultations()
   }, [fetchConsultations])
 
   return (
     <ConsultationsContext.Provider
-      value={{ consultations, fetchConsultations, createNewConsultation }}
+      value={{
+        consultations,
+        fetchConsultations,
+        createNewConsultation,
+        startNewConsultation,
+        startConsultation,
+      }}
     >
       {children}
     </ConsultationsContext.Provider>

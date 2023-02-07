@@ -1,21 +1,29 @@
+import * as Dialog from '@radix-ui/react-dialog'
 import { memo } from 'react'
 import { useContextSelector } from 'use-context-selector'
 import { Button } from '../../../../components/Button'
 import { ConsultationsContext } from '../../../../contexts/ConsultationsContext'
 import { dateFormatter } from '../../../../utils/formatter'
+import { ModalStartConsultation } from '../ModalStartConsultation'
 import { TableConsultationsContainer, TableConsultations } from './styles'
 
 function TableConsultationsListGet() {
-  const consultations = useContextSelector(ConsultationsContext, (context) => {
-    return context.consultations
-  })
+  const consultationsContext = useContextSelector(
+    ConsultationsContext,
+    (context) => {
+      return context
+    },
+  )
+
+  const { consultations, startNewConsultation } = consultationsContext
+
   const numbersScheduledAppointments = consultations.length
 
-  function handleClickFilterConsultation(consultationId: number) {
+  function handleClickFilterStartConsultation(consultationId: number) {
     const filterConsultation = consultations.filter(
       (consultation) => consultation.id === consultationId,
     )
-    console.log('em atendimento', filterConsultation[0])
+    startNewConsultation(filterConsultation[0])
   }
 
   return (
@@ -30,11 +38,19 @@ function TableConsultationsListGet() {
                 <div>{dateFormatter(consultation.date)}</div>
               </td>
               <td>
-                <Button
-                  variant="inline"
-                  text="Atender"
-                  onClick={() => handleClickFilterConsultation(consultation.id)}
-                />
+                <Dialog.Root>
+                  <Dialog.Trigger asChild>
+                    <Button
+                      variant="inline"
+                      text="Atender"
+                      onClick={() =>
+                        handleClickFilterStartConsultation(consultation.id)
+                      }
+                    />
+                  </Dialog.Trigger>
+
+                  <ModalStartConsultation />
+                </Dialog.Root>
               </td>
             </tr>
           ))}
