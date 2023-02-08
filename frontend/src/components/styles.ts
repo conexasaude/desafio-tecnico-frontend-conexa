@@ -12,6 +12,10 @@ export const HeaderFooterContent = styled.div<HeaderFooterProps>`
   justify-content: space-between;
   align-items: center;
 
+  a {
+    text-decoration: none;
+  }
+
   @media only screen and (max-width: 600px) {
     justify-content: center;
 

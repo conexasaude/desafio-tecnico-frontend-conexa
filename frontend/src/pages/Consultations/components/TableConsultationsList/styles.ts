@@ -6,7 +6,10 @@ export const TableConsultationsContainer = styled.div`
   align-self: center;
   justify-content: center;
   align-items: center;
-  margin: 100px;
+  margin: 50px;
+  border-radius: 6px;
+  padding: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   @media only screen and (max-width: 900px) {
     margin: 0;
@@ -28,6 +31,10 @@ export const TableConsultations = styled.table`
 
   td {
     padding: 0.55rem 0rem;
+
+    button {
+      float: right;
+    }
 
     @media only screen and (max-width: 900px) {
       font-size: 20px;
