@@ -22,6 +22,7 @@ export function LoginForm() {
   const handleLogin = useContextSelector(AuthContext, (context) => {
     return context.handleLogin
   })
+
   const LoginForm = useForm<LoginFormInputsType>({
     resolver: zodResolver(LoginFormSchema),
   })

@@ -14,6 +14,7 @@ export const auth = async (dataLogin: AuthProps) => {
     }
   } catch (error) {
     console.log(error)
+    throw error
   }
 }
 

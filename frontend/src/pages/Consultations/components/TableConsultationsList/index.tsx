@@ -1,5 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog'
-import { memo } from 'react'
+import { memo, useEffect } from 'react'
 import { useContextSelector } from 'use-context-selector'
 import { Button } from '../../../../components/Button'
 import { ConsultationsContext } from '../../../../contexts/ConsultationsContext'
@@ -15,7 +15,8 @@ function TableConsultationsListGet() {
     },
   )
 
-  const { consultations, startNewConsultation } = consultationsContext
+  const { consultations, startNewConsultation, fetchConsultations } =
+    consultationsContext
 
   const numbersScheduledAppointments = consultations.length
 
@@ -25,6 +26,10 @@ function TableConsultationsListGet() {
     )
     startNewConsultation(filterConsultation[0])
   }
+
+  useEffect(() => {
+    fetchConsultations()
+  }, [])
 
   return (
     <TableConsultationsContainer>

@@ -1,6 +1,6 @@
 import { ReactNode, useCallback, useState } from 'react'
 import { createContext } from 'use-context-selector'
-import { PatientsService } from '../services/api/patients/Patients'
+import { PatientsService } from '../services/api/patients'
 
 interface Patient {
   id: number
@@ -22,7 +22,6 @@ export const PatientsContext = createContext({} as PatientsContextType)
 
 export function PatientsProvider({ children }: PatientsProviderProps) {
   const [patients, setPatients] = useState<Patient[]>([])
-  console.log('patients', patients)
 
   const fetchPatients = useCallback(async () => {
     const response = await PatientsService.getAll()

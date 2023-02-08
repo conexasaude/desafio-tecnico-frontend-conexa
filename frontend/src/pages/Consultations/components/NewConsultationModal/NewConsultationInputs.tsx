@@ -1,13 +1,14 @@
+import { memo, useEffect } from 'react'
 import shortid from 'shortid'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import br from 'date-fns/locale/pt-BR'
 import { useContextSelector } from 'use-context-selector'
 import { useFormContext, Controller } from 'react-hook-form'
 import { PatientsContext } from '../../../../contexts/PatientsContext'
-import { useEffect } from 'react'
+
 registerLocale('br', br)
 
-export function NewConsultationInputs() {
+export function NewConsultationInputsForm() {
   const patientsContext = useContextSelector(PatientsContext, (context) => {
     return context
   })
@@ -52,3 +53,5 @@ export function NewConsultationInputs() {
     </>
   )
 }
+
+export const NewConsultationInputs = memo(NewConsultationInputsForm)

@@ -1,7 +1,7 @@
-import { ReactNode, useCallback, useEffect, useState } from 'react'
+import { ReactNode, useCallback, useState } from 'react'
 import { createContext } from 'use-context-selector'
 import { api } from '../services/api/axios-config'
-import { ConsultationsService } from '../services/api/consultations/Consultations'
+import { ConsultationsService } from '../services/api/consultations'
 
 interface Consultation {
   id: number
@@ -54,6 +54,7 @@ export function ConsultationsProvider({
       try {
         await api.post('/consultations', data)
         await fetchConsultations()
+        alert('Consulta agendada com sucesso')
       } catch (error) {
         console.log(error)
       }
@@ -66,10 +67,6 @@ export function ConsultationsProvider({
       setStartConsultation(consultation)
     }
   }
-
-  useEffect(() => {
-    fetchConsultations()
-  }, [fetchConsultations])
 
   return (
     <ConsultationsContext.Provider

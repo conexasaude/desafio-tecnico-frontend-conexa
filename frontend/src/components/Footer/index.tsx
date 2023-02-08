@@ -13,7 +13,13 @@ export function Footer() {
   return (
     <FooterContainer>
       <HeaderFooterContent variant={contextAuth}>
-        <Button variant="outline" text="Ajuda" />
+        <a
+          href="https://www.conexasaude.com.br/#contato"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Button variant="outline" text="Ajuda" />
+        </a>
         <Dialog.Root>
           <Dialog.Trigger asChild>
             <Button variant="inline" text="Agendar Consulta" />

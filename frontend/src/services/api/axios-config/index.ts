@@ -1,16 +1,17 @@
 import axios from 'axios'
 import { errorInterceptor, responseInterceptor } from './interceptors'
 
-const TOKEN_USER =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZmFrZSB0b2tlbiJ9.-tvEhfr6_VHfKU9bumcmdvku-IfwZDz2LtjeqZOuH-g'
-
 export const api = axios.create({
   baseURL: 'http://localhost:3333',
-  headers: {
-    Authorization: TOKEN_USER,
-  },
 })
 
+api.interceptors.request.use((config) => {
+  config.headers.Authorization = JSON.parse(
+    localStorage.getItem('APP_ACCESS_TOKEN') as string,
+  )
+  console.log('config', config)
+  return config
+})
 api.interceptors.response.use(
   (response) => responseInterceptor(response),
   (error) => errorInterceptor(error),

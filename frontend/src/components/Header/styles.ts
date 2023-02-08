@@ -6,3 +6,10 @@ export const HeaderContainer = styled.header`
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.05);
   background: ${({ theme }) => theme.colors['base-white']};
 `
+
+export const LoginNameContainer = styled.div`
+  display: flex;
+
+  align-items: center;
+  gap: 1rem;
+`

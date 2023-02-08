@@ -3,7 +3,7 @@ import logoConexa from '../../assets/logo-conexa.svg'
 import { AuthContext } from '../../contexts/AuthContext'
 import { Button } from '../Button'
 import { HeaderFooterContent } from '../styles'
-import { HeaderContainer } from './styles'
+import { HeaderContainer, LoginNameContainer } from './styles'
 import { useNavigate } from 'react-router-dom'
 
 export function Header() {
@@ -23,12 +23,17 @@ export function Header() {
     }
   }
 
+  const doctor = JSON.parse(localStorage.getItem('APP_ACCESS_USER') || '{}')
+
   return (
     <HeaderContainer>
       <HeaderFooterContent variant={isAuthenticated}>
         <img src={logoConexa} alt="logo" />
         {isAuthenticated && (
-          <Button variant="outline" text="Sair" onClick={handleLogoutUser} />
+          <LoginNameContainer>
+            <span>Olá, Dr. {doctor.name}</span>
+            <Button variant="outline" text="Sair" onClick={handleLogoutUser} />
+          </LoginNameContainer>
         )}
       </HeaderFooterContent>
     </HeaderContainer>
