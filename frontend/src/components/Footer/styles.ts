@@ -8,4 +8,5 @@ export const FooterContainer = styled.footer`
   bottom: 0rem;
   right: 0;
   background: ${({ theme }) => theme.colors['base-white']};
+  box-shadow: 12px 12px 12px 14px rgba(0, 0, 0, 0.05);
 `
