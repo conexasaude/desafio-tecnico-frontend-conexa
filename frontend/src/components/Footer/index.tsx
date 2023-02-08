@@ -1,10 +1,10 @@
-import { Button } from '../Button'
+import * as Dialog from '@radix-ui/react-dialog'
 import { useContextSelector } from 'use-context-selector'
+import { Button } from '../Button'
 import { HeaderFooterContent } from '../styles'
 import { FooterContainer } from './styles'
 import { NewConsultationModal } from '../../pages/Consultations/components/NewConsultationModal'
 import { AuthContext } from '../../contexts/AuthContext'
-import * as Dialog from '@radix-ui/react-dialog'
 
 export function Footer() {
   const contextAuth = useContextSelector(AuthContext, (context) => {

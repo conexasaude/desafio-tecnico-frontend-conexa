@@ -1,5 +1,4 @@
 import * as Dialog from '@radix-ui/react-dialog'
-import logoConexa from '../../../../assets/logo-conexa.svg'
 import {
   CloseButtonStart,
   ContentContainer,
@@ -9,6 +8,7 @@ import {
 } from './styles'
 import { X } from 'phosphor-react'
 import { useContextSelector } from 'use-context-selector'
+import logoConexa from '../../../../assets/logo-conexa.svg'
 import { ConsultationsContext } from '../../../../contexts/ConsultationsContext'
 
 export function ModalStartConsultation() {

@@ -6,10 +6,11 @@ import {
 import { useForm, FormProvider } from 'react-hook-form'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { LoginFormInputs } from './LoginFormInputs'
-import { useContextSelector } from 'use-context-selector'
-import { AuthContext } from '../../../../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import { useContextSelector } from 'use-context-selector'
+import { LoginFormInputs } from './LoginFormInputs'
+import { AuthContext } from '../../../../contexts/AuthContext'
+
 const LoginFormSchema = zod.object({
   email: zod.string().email(),
   password: zod.string(),

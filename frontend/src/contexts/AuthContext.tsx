@@ -1,20 +1,11 @@
-import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { createContext } from 'use-context-selector'
 import { Authservice } from '../services/api/auth/AuthService'
-
-interface AuthProps {
-  email: string
-  password: string
-}
-interface AuthContextProviderProps {
-  isAuthenticated: boolean
-  handleLogin: (data: AuthProps) => Promise<string | void>
-  handleLogout: () => void
-}
-
-interface AuthContextProps {
-  children: ReactNode
-}
+import {
+  AuthContextProps,
+  AuthContextProviderProps,
+  AuthProps,
+} from '../interfaces/Auth'
 
 export const AuthContext = createContext({} as AuthContextProviderProps)
 

@@ -1,10 +1,10 @@
 import { useContextSelector } from 'use-context-selector'
+import { useNavigate } from 'react-router-dom'
 import logoConexa from '../../assets/logo-conexa.svg'
 import { AuthContext } from '../../contexts/AuthContext'
 import { Button } from '../Button'
 import { HeaderFooterContent } from '../styles'
 import { HeaderContainer, LoginNameContainer } from './styles'
-import { useNavigate } from 'react-router-dom'
 
 export function Header() {
   const navigate = useNavigate()

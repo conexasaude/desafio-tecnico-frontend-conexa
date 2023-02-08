@@ -1,22 +1,11 @@
-import { ReactNode, useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { createContext } from 'use-context-selector'
 import { PatientsService } from '../services/api/patients'
-
-interface Patient {
-  id: number
-  email: string
-  first_name: string
-  last_name: string
-}
-
-interface PatientsContextType {
-  patients: Patient[]
-  fetchPatients: () => Promise<void>
-}
-
-interface PatientsProviderProps {
-  children: ReactNode
-}
+import {
+  Patient,
+  PatientsContextType,
+  PatientsProviderProps,
+} from '../interfaces/Patient'
 
 export const PatientsContext = createContext({} as PatientsContextType)
 

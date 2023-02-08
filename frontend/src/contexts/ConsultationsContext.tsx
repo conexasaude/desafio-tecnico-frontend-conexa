@@ -1,35 +1,13 @@
-import { ReactNode, useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { createContext } from 'use-context-selector'
 import { api } from '../services/api/axios-config'
 import { ConsultationsService } from '../services/api/consultations'
-
-interface Consultation {
-  id: number
-  date: string
-  patient: {
-    id: number
-    email: string
-    first_name: string
-    last_name: string
-  }
-}
-
-interface NewConsultationProps {
-  patientId: number
-  date: Date
-}
-
-interface ConsultationsContextType {
-  consultations: Consultation[]
-  startConsultation: Consultation | undefined
-  fetchConsultations: () => Promise<void>
-  createNewConsultation: (data: NewConsultationProps) => Promise<void>
-  startNewConsultation: (data: Consultation) => void
-}
-
-interface ConsultationsProviderProps {
-  children: ReactNode
-}
+import {
+  Consultation,
+  NewConsultationProps,
+  ConsultationsContextType,
+  ConsultationsProviderProps,
+} from './../interfaces/Consultation'
 
 export const ConsultationsContext = createContext(
   {} as ConsultationsContextType,
@@ -53,13 +31,13 @@ export function ConsultationsProvider({
     async (data: NewConsultationProps) => {
       try {
         await api.post('/consultations', data)
-        await fetchConsultations()
+        fetchConsultations()
         alert('Consulta agendada com sucesso')
       } catch (error) {
         console.log(error)
       }
     },
-    [fetchConsultations],
+    [],
   )
 
   function startNewConsultation(consultation: Consultation) {

@@ -1,11 +1,11 @@
 import * as zod from 'zod'
 import * as Dialog from '@radix-ui/react-dialog'
-import logoConexa from '../../../../assets/logo-conexa.svg'
+import { useContextSelector } from 'use-context-selector'
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { X } from 'phosphor-react'
+import logoConexa from '../../../../assets/logo-conexa.svg'
 import { NewConsultationInputs } from './NewConsultationInputs'
-import { useContextSelector } from 'use-context-selector'
 import { ConsultationsContext } from '../../../../contexts/ConsultationsContext'
 import {
   ButtonModalSubmit,

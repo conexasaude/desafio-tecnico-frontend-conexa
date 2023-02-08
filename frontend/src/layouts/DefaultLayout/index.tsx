@@ -1,7 +1,7 @@
-import { Header } from '../../components/Header'
 import { Outlet } from 'react-router-dom'
-import { Footer } from '../../components/Footer'
 import { useContextSelector } from 'use-context-selector'
+import { Header } from '../../components/Header'
+import { Footer } from '../../components/Footer'
 import { AuthContext } from '../../contexts/AuthContext'
 
 export function DefaultLayout() {
