@@ -45,7 +45,7 @@ export function ConsultationsProvider({
     const response = await ConsultationsService.getAll()
 
     if (response) {
-      setConsultations(response)
+      setConsultations([])
     }
   }, [])
 
